@@ -1,26 +1,52 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class="login">
+  <div class="container ">
+    <div class="row">
+      <div class="login-container col-xl-4 col-lg-5 col-md-6 col-sm-8 col-xs-12">
+        <div class="login-title text-center">
+          <h2><span><%= link_to '', root_path %></span></h2>
+        </div>
+        <div class="login-content">
+          <div class="login-header ">
+            <h4><strong>Joyful Admin Login</strong></h4>
+          </div>
+          <div class="login-body">
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+              <%= render "devise/shared/error_messages", resource: resource %>
+              <div class="form-group ">
+                <div class="pos-r">
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "form-control" %>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="pos-r">
+                  <%= f.password_field :password, autocomplete: "current-password", placeholder: "Password", class: "form-control" %>
+                </div>
+              </div>
+              <!--
+              <div class="form-group text-right">
+                <% if devise_mapping.rememberable? %>
+                  <div class="field">
+                    <%= f.check_box :remember_me %>
+                    <%= f.label :remember_me %>
+                  </div>
+                <% end %>
+              </div>
+              -->
+              <div class="form-group">
+                <button type="submit" class="form-btn form-btn-login">
+                  <span>Login</span>
+                </button>
+              </div>
+            <% end %>
+          </div>
+          <!--
+          <div class="login-footer text-center template">
+            <%= render "devise/shared/links" %>
+          </div>
+          -->
+          <!-- end  login-body -->
+        </div><!-- end  login-content -->
+      </div>  <!-- end  login-container -->
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "admin_users/shared/links" %>
+  </div><!-- end container -->
+</div>
