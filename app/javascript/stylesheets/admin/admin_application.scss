@@ -87,6 +87,17 @@ $brand-color: #ff5a5f;
   color: $brand-color;
 }
 
+.form-group .form-btn{
+  color: #fff;
+  width: 90%;
+  height: 40px;
+  font-size: 1.1rem;
+  border-radius: 1rem;
+  background: $brand;
+  border: none;
+  font-weight: 600;
+}
+
 .form-group {
   .form-btn-login{
     width: 100%;
