@@ -9,7 +9,7 @@ function main() {
   (function () {
      'use strict';
 
-      $('a.page-scroll').click(function() {
+     $(document).on('click', 'a.page-scroll', function() {
           if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
             var target = $(this.hash);
             target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
@@ -38,7 +38,7 @@ function main() {
       });
 
     // Hide nav on click
-    $(".navbar-nav li a").click(function (event) {
+    $(document).on('click', '.navbar-nav li a', function (event) {
       // check if window is small enough so dropdown is created
       var toggle = $(".navbar-toggle").is(":visible");
       if (toggle) {
