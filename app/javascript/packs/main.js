@@ -3,7 +3,6 @@ $(function () {
   $('[data-toggle="popover"]').popover()
 })
 
-
 function main() {
 
   (function () {
@@ -30,11 +29,6 @@ function main() {
           } else {
               $('.navbar-default').removeClass('on');
           }
-      });
-
-      $('body').scrollspy({
-          target: '.navbar-default',
-          offset: 80
       });
 
     // Hide nav on click
