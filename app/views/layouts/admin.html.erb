@@ -10,8 +10,13 @@
     <%= javascript_pack_tag 'admin/admin_application' %>
   </head>
 
-  <body>
-    <%= render 'shared/message' %>
-    <%= yield %>
+  <body class="sidebar-mini layout-fixed layout-navbar-fixed" cz-shortcut-listen="true" style="height: auto;">
+    <div class="wrapper">
+      <%= render 'shared/admin/navbar' %>
+      <%= render 'shared/admin/sidebar' %>
+      <%= render 'shared/admin/message' %>
+      <%= yield %>
+      <%= render 'shared/admin/footer' %>
+    </div>
   </body>
 </html>
