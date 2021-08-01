@@ -14,6 +14,8 @@ import $ from 'jquery'
 window.jQuery = $;
 window.$ = $;
 
+window.toastr = require("toastr");
+
 // scss
 import "../stylesheets/application"
 

@@ -1,4 +1,11 @@
 <% unless flash.empty? %>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <script type="text/javascript">
+    <% flash.each do |key, value| %>
+    <% type = key.to_s.gsub('alert','error').gsub('notice','success') %>
+      toastr.<%= type %>('<%= value %>', '', {
+          "closeButton": true,
+          "timeOut": "5000",
+          "progressBar": true, })
+    <% end %>
+  </script>
 <% end %>
