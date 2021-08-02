@@ -16,6 +16,9 @@ window.$ = $;
 
 require('admin-lte');
 
+import Sortable from 'sortablejs';
+window.Sortable = Sortable
+
 // scss
 import "../../stylesheets/admin/admin_application"
 
