@@ -2,10 +2,12 @@ Rails.application.routes.draw do
   devise_for :admin_users, controllers: {
     sessions: 'admin_users/sessions'
   }
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
   root 'home#index'
 
   namespace :admin do
     root 'dashboard#index'
+    resources :dishes do
+    end
   end
 end

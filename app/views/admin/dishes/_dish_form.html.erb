@@ -1,0 +1,50 @@
+<div class="main-content" style="min-height: 616px;">
+  <section class="section">
+    <div class="section-header">
+      <h2>Form</h2>
+    </div>
+
+    <div class="section-body">
+      <h2 class="section-title"></h2>
+      <p class="section-lead"></p>
+
+      <div class="row">
+      <%= form_for [:admin, @dish] , html: { class: "col-12 col-md-6 col-lg-6" } do |f| %>
+          <form role="form">
+            <div class="card-body">
+              <div class="form-group">
+                <%= label_tag("Type") %>
+                <%= f.text_field :dish_type, class: "form-control", placeholder: "Type" %>
+              </div>
+              <div class="form-group">
+                <%= label_tag("English name") %>
+                <%= f.text_field :english_name, class: "form-control", placeholder: "English name" %>
+              </div>
+              <div class="form-group">
+                <%= label_tag("Chinese name") %>
+                <%= f.text_field :chinese_name, class: "form-control", placeholder: "Chinese name" %>
+              </div>
+              <div class="form-group">
+                <%= label_tag("price(small)") %>
+                <%= f.text_field :small_price, class: "form-control", placeholder: "price(small)" %>
+              </div>
+              <div class="form-group">
+                <%= label_tag("price(large)") %>
+                <%= f.text_field :large_price, class: "form-control", placeholder: "price(large)" %>
+              </div>
+              <div class="form-group">
+                <%= label_tag("description") %>
+                <%= f.text_field :description, class: "form-control", placeholder: "description" %>
+              </div>
+            </div>
+            <!-- /.card-body -->
+
+            <div class="card-footer">
+              <%= f.submit "submit", class: "btn btn-primary" %>
+            </div>
+          </form>
+        <% end %>
+      </div>
+    </div>
+  </section>
+</div>
