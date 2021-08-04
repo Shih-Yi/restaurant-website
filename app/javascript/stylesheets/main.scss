@@ -265,7 +265,7 @@ header .intro-text {
 	margin: 0 auto;
 }
 #restaurant-menu .menu-section {
-	margin: 0 20px 80px;
+	margin: 0 20px;
 }
 #restaurant-menu .menu-section-title {
 	font-size: 32px;
@@ -276,7 +276,10 @@ header .intro-text {
 	text-align: center;
 }
 #restaurant-menu .menu-item {
-	margin: 45px 0;
+	margin: 20px 0;
+	font-size: 18px;
+}
+#restaurant-menu .size-item {
 	font-size: 18px;
 }
 #restaurant-menu .menu-item-name {
@@ -290,10 +293,13 @@ header .intro-text {
 	width: 85%;
 }
 #restaurant-menu .menu-item-price {
-	float: right;
+	// float: right;
 	font-weight: 400;
 	color: #555;
-	margin-top: -36px;
+	// margin-top: -36px;
+}
+#restaurant-menu .menu-item-name-price {
+	margin-bottom: 10px;
 }
 /* Gallery Section */
 #gallery {

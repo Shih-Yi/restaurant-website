@@ -3,5 +3,7 @@ class HomeController < ApplicationController
   end
 
   def menu
+    @dishes = Dish.all.order("position asc")
+    @entree = @dishes.entree
   end
 end
