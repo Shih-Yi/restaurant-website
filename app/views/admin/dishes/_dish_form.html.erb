@@ -14,7 +14,7 @@
             <div class="card-body">
               <div class="form-group">
                 <%= label_tag("Type") %>
-                <%= f.text_field :dish_type, class: "form-control", placeholder: "Type" %>
+                <%= f.select :dish_type, Dish::TYPE, {}, { class: "custom-select" } %>
               </div>
               <div class="form-group">
                 <%= label_tag("English name") %>
