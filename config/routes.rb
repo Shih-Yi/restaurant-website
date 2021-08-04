@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
+  get 'menu', to: 'home#menu'
+
   namespace :admin do
     root 'dashboard#index'
     resources :dishes do
