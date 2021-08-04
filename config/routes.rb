@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   namespace :admin do
     root 'dashboard#index'
     resources :dishes do
+      member do
+        put :update_position
+      end
     end
   end
 end

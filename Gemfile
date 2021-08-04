@@ -27,6 +27,8 @@ gem 'jbuilder', '~> 2.7'
 
 # Flexible authentication solution for Rails with Warden
 gem 'devise', github: 'heartcombo/devise', branch: "master"
+# An ActiveRecord plugin for managing lists
+gem 'acts_as_list'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
