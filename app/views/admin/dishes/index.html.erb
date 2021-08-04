@@ -39,7 +39,6 @@
                     <th>Chinese Name</th>
                     <th>Price(small)</th>
                     <th>Price(large)</th>
-                    <th>Description</th>
                     <th>Settings</th>
                   </tr>
                 </thead>
@@ -51,7 +50,12 @@
                       <td><%= dish.chinese_name %></td>
                       <td><%= dish.small_price %></td>
                       <td><%= dish.large_price %></td>
-                      <td><%= dish.description %></td>
+                      <td>
+                        <%= link_to edit_admin_dish_path(dish), class: "aaa"  do %>
+                          <i class="far fa-edit fa-2x"></i>
+                        <% end %>
+                        <span class="dish-destroy" data-id=<%= dish.id %>><i class="far fa-times-circle fa-2x"></i></span>
+                      </td>
                     </tr>
                   <% end %>
                 </tbody>
@@ -87,6 +91,30 @@
     }
   });
 
+  $(document).on('click', ".dish-destroy",
+    function(){
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          let id = $(this).data("id")
+          $.ajax({
+            url: "/admin/dishes/" + id,
+            method: 'delete',
+          })
+          .done(function (ret) {
+            location.reload();
+          })
+        }
+      })
+    }
+  )
 </script>
 
 <style>

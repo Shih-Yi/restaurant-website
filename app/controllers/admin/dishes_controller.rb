@@ -1,5 +1,5 @@
 class Admin::DishesController < Admin::BaseController
-  before_action :set_dish, only: [:update_position]
+  before_action :set_dish, only: [:edit, :update, :destroy, :update_position]
 
   def index
     @dishes = Dish.all.order("position asc")
@@ -7,6 +7,9 @@ class Admin::DishesController < Admin::BaseController
 
   def new
     @dish = Dish.new
+  end
+
+  def edit
   end
 
   def create
@@ -17,7 +20,15 @@ class Admin::DishesController < Admin::BaseController
   end
 
   def update
+    @dish.update(dish_params)
+    @dish.save!
+    flash[:success] = "Successfully"
+    redirect_to admin_dishes_path
+  end
 
+  def destroy
+    @dish.destroy
+    render status: 200, json: { result: "Delete Successfully" }
   end
 
   def update_position

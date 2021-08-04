@@ -18,6 +18,9 @@ require('admin-lte');
 
 import Sortable from 'sortablejs';
 window.Sortable = Sortable
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+window.Swal = Swal
+window.toastr = require("toastr");
 
 // scss
 import "../../stylesheets/admin/admin_application"
