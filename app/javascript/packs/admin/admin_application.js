@@ -9,7 +9,9 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 
 import "bootstrap"
-import "@fortawesome/fontawesome-free/js/all"
+// stop conversion to SVG
+// import "@fortawesome/fontawesome-free/js/all"
+import "@fortawesome/fontawesome-free/css/all.css";
 import $ from 'jquery'
 window.jQuery = $;
 window.$ = $;
