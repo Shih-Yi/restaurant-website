@@ -2,7 +2,8 @@ class Admin::DishesController < Admin::BaseController
   before_action :set_dish, only: [:edit, :update, :destroy, :update_position]
 
   def index
-    @dishes = Dish.all.order("position asc")
+    dish_type = params[:dish_type]
+    @dishes = Dish.send(dish_type)
   end
 
   def new
