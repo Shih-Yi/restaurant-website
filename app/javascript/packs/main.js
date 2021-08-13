@@ -19,7 +19,7 @@ $(document).on('click', 'a.page-scroll', function() {
 
 // Show Menu on scroll
 $(window).bind('scroll', function() {
-  var navHeight = $(window).height() - 600;
+  var navHeight = $(window).height() - 567;
   if ($(window).scrollTop() > navHeight) {
       $('.navbar-default').addClass('on');
   } else {
