@@ -16,92 +16,11 @@
   <!-- Restaurant Menu Section -->
   <div id="restaurant-menu">
     <div class="container">
-      <div class="section-title text-center">
+      <%# <div class="section-title text-center">
         Menu
-      </div>
-      <!-- Entree Section -->
-      <h2 class="menu-section-title">Entree</h2>
-      <div class="row">
-        <div class="col-xs-12 col-sm-6 mobile-hide">
-          <div class="menu-section">
-            <div class="size-item">
-              <div class="row">
-                <div class="col-8">
-                </div>
-                <div class="col-2">
-                  <span class="menu-item-price">Small</span>
-                </div>
-                <div class="col-2">
-                  <span class="menu-item-price">Large</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xs-12 col-sm-6">
-          <div class="menu-section">
-            <div class="size-item">
-              <div class="row">
-                <div class="col-8">
-                </div>
-                <div class="col-2">
-                  <span class="menu-item-price">Small</span>
-                </div>
-                <div class="col-2">
-                  <span class="menu-item-price">Large</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Entree Dishes -->
-      <div class="row">
-        <% @entree.each.with_index do |dish, index| %>
-          <% if (index+1).odd? %>
-          <div class="col-xs-12 col-sm-6">
-            <div class="menu-section">
-              <div class="menu-item">
-                <div class="row menu-item-name-price">
-                  <div class="col-8">
-                    <span class="menu-item-name"><%= dish.english_name %></span>
-                  </div>
-                  <div class="col-2">
-                    <span class="menu-item-price">$<%= dish.small_price %></span>
-                  </div>
-                  <div class="col-2">
-                    <span class="menu-item-price">$<%= dish.large_price %></span>
-                  </div>
-                </div>
-                <div>
-                  <div class="menu-item-description"><%= dish.chinese_name %></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        <% else %>
-          <div class="col-xs-12 col-sm-6">
-            <div class="menu-section">
-              <div class="menu-item">
-                <div class="row menu-item-name-price">
-                  <div class="col-8">
-                    <span class="menu-item-name"><%= dish.english_name %></span>
-                  </div>
-                  <div class="col-2">
-                    <span class="menu-item-price">$<%= dish.small_price %></span>
-                  </div>
-                  <div class="col-2">
-                    <span class="menu-item-price">$<%= dish.large_price %></span>
-                  </div>
-                </div>
-                <div>
-                  <div class="menu-item-description"><%= dish.chinese_name %></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        <% end %>
+      </div> %>
+      <% @all_types.each do |dish_type| %>
+        <%= render 'dish_section', dish_type: dish_type %>
       <% end %>
-      </div>
     </div>
   </div>
