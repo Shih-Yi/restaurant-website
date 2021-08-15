@@ -17,14 +17,14 @@ class Admin::DishesController < Admin::BaseController
     dish = Dish.new(dish_params)
     dish.save!
     flash[:success] = "Create Successfully"
-    redirect_to admin_dishes_path
+    redirect_to admin_dishes_path(dish_type: params[:dish][:dish_type].downcase)
   end
 
   def update
     @dish.update(dish_params)
     @dish.save!
     flash[:success] = "Successfully"
-    redirect_to admin_dishes_path
+    redirect_to admin_dishes_path(dish_type: params[:dish][:dish_type].downcase)
   end
 
   def destroy

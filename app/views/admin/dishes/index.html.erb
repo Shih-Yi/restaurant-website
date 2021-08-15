@@ -43,8 +43,8 @@
                   </tr>
                 </thead>
                 <tbody id="dish_list">
-                  <% @dishes.each do |dish| %>
-                    <tr data-id="<%= dish.id %>" class="sortable-class" >
+                  <% @dishes.each_with_index do |dish, index| %>
+                    <tr data-index="<%= index %>" data-id="<%= dish.id %>" data-position_id="<%= dish.position %>" class="sortable-class" >
                       <td><%= dish.position %></td>
                       <td><%= dish.english_name %></td>
                       <td><%= dish.chinese_name %></td>
@@ -79,8 +79,10 @@
     draggable: ".sortable-class",
     onEnd: function (evt) {
       let id = evt.item.dataset.id
+      let new_index = evt.newIndex
+      let position_id = $("#dish_list").find("[data-index=" + new_index + "]").attr("data-position_id")
       let data = new FormData()
-      data.append('position', evt.newIndex + 1)
+      data.append('position', position_id)
       $.ajax({
         url: "/admin/dishes/" + id + "/update_position",
         type: 'PUT',
