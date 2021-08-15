@@ -1,13 +1,13 @@
 class Dish < ApplicationRecord
   acts_as_list
 
-  TYPE = %w[Entree Soup Chicken Beef].map(&:freeze).freeze
+  TYPE = %w[entree soup chicken beef].map(&:freeze).freeze
 
   default_scope { order(position: :asc) }
-  scope :entree, -> { where(dish_type: "Entree")}
-  scope :soup, -> { where(dish_type: "Soup")}
-  scope :chicken, -> { where(dish_type: "Chicken")}
-  scope :beef, -> { where(dish_type: "Beef")}
+  scope :entree, -> { where(dish_type: "entree")}
+  scope :soup, -> { where(dish_type: "soup")}
+  scope :chicken, -> { where(dish_type: "chicken")}
+  scope :beef, -> { where(dish_type: "beef")}
 
   before_create do
     self.position ||= self.class.all.size + 1
