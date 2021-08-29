@@ -18,13 +18,13 @@ h2 {
 	text-transform: uppercase;
 	position: relative;
 	margin-top: 10px;
-	margin-bottom: 15px;
+	margin-bottom: 50px;
 	padding-bottom: 20px;
 }
 h2::after {
 	position: absolute;
 	content: "";
-	background: #d43031;
+	background: #ef8892;
 	height: 2px;
 	width: 70px;
 	bottom: 0;
@@ -485,6 +485,23 @@ i.circle {
 		text-align: center;
 	}
 }
+
+.btn-section {
+	margin: 30px auto 0;
+	.btn-default {
+		color: #fff;
+		height: 40px;
+		font-size: 1.1rem;
+		border-radius: 1rem;
+		background: #efa8b0;
+		border: none;
+		font-weight: 600;
+		&:hover {
+			background-color: #ef8892; /* Green */
+		}
+	}
+}
+
 @media (max-width: 767px) {
   .mobile-hide {
     display: none;
