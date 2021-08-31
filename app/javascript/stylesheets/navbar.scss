@@ -347,13 +347,13 @@
 }
 // scrollspy
 .nav-pills .nav-link.active {
-  color: #d43031 !important;
-  background-color: transparent !important;;
+  color: #fff;
+  background-color: transparent !important;
 }
 
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-  color: #333;
+  color: #fff;
   background-color: transparent;
 }
 .navbar-default .navbar-nav > .active > a,
