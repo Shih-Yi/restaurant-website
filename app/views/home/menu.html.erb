@@ -16,9 +16,9 @@
   <!-- Restaurant Menu Section -->
   <div id="restaurant-menu">
     <div class="container">
-      <%# <div class="section-title text-center">
+      <div class="section-title text-center">
         Menu
-      </div> %>
+      </div>
       <% @all_types.each do |dish_type| %>
         <%= render 'dish_section', dish_type: dish_type %>
       <% end %>

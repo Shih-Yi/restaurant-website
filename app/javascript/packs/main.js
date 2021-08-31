@@ -10,7 +10,7 @@ $(document).on('click', 'a.page-scroll', function() {
     target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
     if (target.length) {
       $('html,body').animate({
-        scrollTop: target.offset().top - 60
+        scrollTop: target.offset().top - 55
       }, 900);
       return false;
     }
