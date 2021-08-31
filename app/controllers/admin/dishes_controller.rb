@@ -1,4 +1,5 @@
 class Admin::DishesController < Admin::BaseController
+  before_action :authenticate_admin_user!
   before_action :set_dish, only: [:edit, :update, :destroy, :update_position]
 
   def index
