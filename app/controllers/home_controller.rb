@@ -6,10 +6,9 @@ class HomeController < ApplicationController
 
   def menu
     @dishes = Dish.all.order("position asc")
-    @entree = @dishes.entree
-    @soup = @dishes.soup
-    @chicken = @dishes.chicken
-    @beef = @dishes.beef
-    @all_types = [@entree, @soup, @chicken, @beef]
+    @dishes_types_array = []
+    Dish::TYPE.each do |type|
+      @dishes_types_array << @dishes.select { |dish| dish.dish_type == type }
+    end
   end
 end

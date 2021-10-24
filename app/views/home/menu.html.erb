@@ -19,8 +19,8 @@
       <div class="section-title text-center">
         Menu
       </div>
-      <% @all_types.each do |dish_type| %>
-        <%= render 'dish_section', dish_type: dish_type %>
+      <% @dishes_types_array.each do |type_dishes| %>
+        <%= render 'dish_section', type_dishes: type_dishes %>
       <% end %>
     </div>
   </div>
