@@ -57,7 +57,7 @@
               <li class="nav-item">
                 <a href="<%= admin_dishes_path(dish_type: type) %>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p><%= type %></p>
+                  <p><%= type.titleize %></p>
                 </a>
               </li>
             <% end %>
