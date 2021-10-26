@@ -1,4 +1,4 @@
-<% if type_dishes.length > 1 %>
+<% if type_dishes.length >= 1 %>
   <!-- Entree Section -->
   <div class="menu-section-title"><%= type_dishes.try(:first).try(:dish_type) %>
   </div>
