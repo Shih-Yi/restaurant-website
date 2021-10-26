@@ -4,7 +4,7 @@ class Admin::DishesController < Admin::BaseController
 
   def index
     dish_type = params[:dish_type]
-    @dishes = Dish.send(dish_type)
+    @dishes = Dish.where(dish_type: dish_type)
   end
 
   def new
