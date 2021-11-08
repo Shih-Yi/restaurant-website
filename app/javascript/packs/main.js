@@ -18,14 +18,17 @@ $(document).on('click', 'a.page-scroll', function() {
 });
 
 // Show Menu on scroll
-$(window).bind('scroll', function() {
+$(document.body).on('touchmove', onScroll); // for mobile
+$(window).on('scroll', onScroll); // for desktop
+
+function onScroll(navHeight){
   var navHeight = $(window).height() - 567;
   if ($(window).scrollTop() > navHeight) {
-      $('.navbar-default').addClass('on');
+    $('.navbar-default').addClass('on');
   } else {
-      $('.navbar-default').removeClass('on');
+    $('.navbar-default').removeClass('on');
   }
-});
+}
 
 // Hide nav on click
 $(document).on('click', '.navbar-nav li a', function (event) {
