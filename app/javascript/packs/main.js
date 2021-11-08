@@ -24,6 +24,10 @@ $(window).on('scroll', onScroll); // for desktop
 function onScroll(navHeight){
   var navHeight = $(window).height() - 567;
   var scrollTop = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop)
+  console.log("-------------begin---------------------")
+  console.log(navHeight)
+  console.log(scrollTop)
+  console.log(scrollTop > navHeight )
   if (scrollTop > navHeight) {
     $('.navbar-default').addClass('on');
   } else {
