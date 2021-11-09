@@ -1,9 +1,10 @@
 <% if type_dishes.length >= 1 %>
-  <!-- Entree Section -->
+  <!-- Section -->
+  <!-- Section title-->
   <div class="menu-section-title"><%= type_dishes.try(:first).try(:dish_type) %>
   </div>
   <div class="menu-section-title-after"></div>
-
+  <!-- size -->
   <div class="row">
     <div class="col-xs-12 col-sm-6">
       <div class="menu-section">
@@ -40,8 +41,8 @@
       </div>
     <% end %>
   </div>
-  <!-- Entree Dishes -->
-  <div class="row">
+  <!-- Dishes -->
+  <div class="row mb-3">
     <% type_dishes.each.with_index do |dish, index| %>
       <% if (index+1).odd? %>
         <div class="col-xs-12 col-sm-6">
@@ -88,4 +89,192 @@
       <% end %>
     <% end %>
   </div>
+
+  <!-- Gallery -->
+  <% if type_dishes.try(:first).try(:dish_type) == 'entree' %>
+    <div class="row">
+      <div class="col-lg-4 col-md-12 mb-3">
+        <img
+          src="/menu_pics/entree/WechatIMG93.jpeg"
+          class="w-100 shadow-1-strong rounded mb-3"
+          alt=""
+        />
+      </div>
+      <div class="col-lg-4 col-md-12 mb-3">
+        <img
+          src="/menu_pics/entree/WechatIMG94.jpeg"
+          class="w-100 shadow-1-strong rounded mb-3"
+          alt=""
+        />
+      </div>
+
+      <div class="col-lg-4 mb-3">
+        <img
+          src="/menu_pics/entree/WechatIMG95.jpeg"
+          class="w-100 shadow-1-strong rounded mb-3"
+          alt=""
+        />
+      </div>
+    </div>
+  <% end %>
+
+  <% if type_dishes.try(:first).try(:dish_type) == 'chicken' %>
+    <div class="row">
+      <div class="col-lg-4 col-md-12 mb-3">
+        <img
+          src="/menu_pics/chicken/WechatIMG97.jpeg"
+          class="w-100 shadow-1-strong rounded mb-3"
+          alt=""
+        />
+      </div>
+      <div class="col-lg-4 col-md-12 mb-3">
+        <img
+          src="/menu_pics/chicken/WechatIMG117.jpeg"
+          class="w-100 shadow-1-strong rounded mb-3"
+          alt=""
+        />
+      </div>
+
+      <div class="col-lg-4 mb-3">
+        <img
+          src="/menu_pics/chicken/WechatIMG114.jpeg"
+          class="w-100 shadow-1-strong rounded mb-3"
+          alt=""
+        />
+      </div>
+
+      <div class="col-lg-4 mb-3">
+        <img
+          src="/menu_pics/chicken/WechatIMG116.jpeg"
+          class="w-100 shadow-1-strong rounded mb-3"
+          alt=""
+        />
+      </div>
+    </div>
+  <% end %>
+
+  <% if type_dishes.try(:first).try(:dish_type) == 'beef' %>
+    <div class="row">
+      <div class="col-lg-4 col-md-12 mb-3">
+        <img
+          src="/menu_pics/beef/WechatIMG100.jpeg"
+          class="w-100 shadow-1-strong rounded mb-3"
+          alt=""
+        />
+      </div>
+    </div>
+  <% end %>
+
+  <% if type_dishes.try(:first).try(:dish_type) == 'pork' %>
+    <div class="row">
+      <div class="col-lg-4 col-md-12 mb-3">
+        <img
+          src="/menu_pics/pork/WechatIMG92.jpeg"
+          class="w-100 shadow-1-strong rounded mb-3"
+          alt=""
+        />
+      </div>
+
+      <div class="col-lg-4 col-md-12 mb-3">
+        <img
+          src="/menu_pics/pork/WechatIMG96.jpeg"
+          class="w-100 shadow-1-strong rounded mb-3"
+          alt=""
+        />
+      </div>
+
+      <div class="col-lg-4 col-md-12 mb-3">
+        <img
+          src="/menu_pics/pork/WechatIMG98.jpeg"
+          class="w-100 shadow-1-strong rounded mb-3"
+          alt=""
+        />
+      </div>
+
+      <div class="col-lg-4 col-md-12 mb-3">
+        <img
+          src="/menu_pics/pork/WechatIMG111.jpeg"
+          class="w-100 shadow-1-strong rounded mb-3"
+          alt=""
+        />
+      </div>
+
+      <div class="col-lg-4 col-md-12 mb-3">
+        <img
+          src="/menu_pics/pork/WechatIMG119.jpeg"
+          class="w-100 shadow-1-strong rounded mb-3"
+          alt=""
+        />
+      </div>
+    </div>
+  <% end %>
+
+  <% if type_dishes.try(:first).try(:dish_type) == 'seafood' %>
+    <div class="row">
+      <div class="col-lg-4 col-md-12 mb-3">
+        <img
+          src="/menu_pics/seafood/WechatIMG118.jpeg"
+          class="w-100 shadow-1-strong rounded mb-3"
+          alt=""
+        />
+      </div>
+
+      <div class="col-lg-4 col-md-12 mb-3">
+        <img
+          src="/menu_pics/seafood/WechatIMG112.jpeg"
+          class="w-100 shadow-1-strong rounded mb-3"
+          alt=""
+        />
+      </div>
+
+      <div class="col-lg-4 col-md-12 mb-3">
+        <img
+          src="/menu_pics/seafood/WechatIMG101.jpeg"
+          class="w-100 shadow-1-strong rounded mb-3"
+          alt=""
+        />
+      </div>
+
+      <div class="col-lg-4 col-md-12 mb-3">
+        <img
+          src="/menu_pics/seafood/WechatIMG102.jpeg"
+          class="w-100 shadow-1-strong rounded mb-3"
+          alt=""
+        />
+      </div>
+
+      <div class="col-lg-4 col-md-12 mb-3">
+        <img
+          src="/menu_pics/seafood/WechatIMG113.jpeg"
+          class="w-100 shadow-1-strong rounded mb-3"
+          alt=""
+        />
+      </div>
+    </div>
+  <% end %>
+
+  <% if type_dishes.try(:first).try(:dish_type) == 'fried noodle' %>
+    <div class="row">
+      <div class="col-lg-4 col-md-12 mb-3">
+        <img
+          src="/menu_pics/fried noodle/WechatIMG115.jpeg"
+          class="w-100 shadow-1-strong rounded mb-3"
+          alt=""
+        />
+      </div>
+    </div>
+  <% end %>
+
+  <% if type_dishes.try(:first).try(:dish_type) == 'chow mein' %>
+    <div class="row">
+      <div class="col-lg-4 col-md-12 mb-3">
+        <img
+          src="/menu_pics/chow mein/WechatIMG99.jpeg"
+          class="w-100 shadow-1-strong rounded mb-3"
+          alt=""
+        />
+      </div>
+    </div>
+  <% end %>
+  <!-- Gallery -->
 <% end %>
