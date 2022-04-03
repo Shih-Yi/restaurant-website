@@ -54,10 +54,10 @@
                   <span class="menu-item-name"><%= dish.english_name %></span>
                 </div>
                 <div class="col-2">
-                  <span class="menu-item-price">$<%= dish.small_price %></span>
+                  <span class="menu-item-price"><%= dish.small_price.present? ? '$' + dish.small_price.to_s : 'N/A' %></span>
                 </div>
                 <div class="col-2">
-                  <span class="menu-item-price">$<%= dish.large_price %></span>
+                  <span class="menu-item-price"><%= dish.large_price.present? ? '$' + dish.large_price.to_s : 'N/A' %></span>
                 </div>
               </div>
               <div>
@@ -75,10 +75,10 @@
                   <span class="menu-item-name"><%= dish.english_name %></span>
                 </div>
                 <div class="col-2">
-                  <span class="menu-item-price">$<%= dish.small_price %></span>
+                  <span class="menu-item-price"><%= dish.small_price.present? ? '$' + dish.small_price.to_s : 'N/A' %></span>
                 </div>
                 <div class="col-2">
-                  <span class="menu-item-price">$<%= dish.large_price %></span>
+                  <span class="menu-item-price"><%= dish.large_price.present? ? '$' + dish.large_price.to_s : 'N/A' %></span>
                 </div>
               </div>
               <div>
