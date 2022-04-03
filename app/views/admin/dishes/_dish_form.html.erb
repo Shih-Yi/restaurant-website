@@ -14,7 +14,7 @@
             <div class="card-body">
               <div class="form-group">
                 <%= label_tag("Type") %>
-                <%= f.select :dish_type, Dish::TYPE, {}, { class: "custom-select" } %>
+                <%= f.select :dish_type, Dish::TYPE.keys, {}, { class: "custom-select" } %>
               </div>
               <div class="form-group">
                 <%= label_tag("English name") %>

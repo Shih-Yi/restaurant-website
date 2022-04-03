@@ -53,7 +53,7 @@
             </p>
           </a>
           <ul class="nav nav-treeview" style="display: none;">
-            <% Dish::TYPE.each do |type| %>
+            <% Dish::TYPE.keys.each do |type| %>
               <li class="nav-item">
                 <a href="<%= admin_dishes_path(dish_type: type) %>" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>

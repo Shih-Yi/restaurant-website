@@ -7,7 +7,7 @@ class HomeController < ApplicationController
   def menu
     @dishes = Dish.all.order("position asc")
     @dishes_types_array = []
-    Dish::TYPE.each do |type|
+    Dish::TYPE.keys.each do |type|
       @dishes_types_array << @dishes.select { |dish| dish.dish_type == type }
     end
   end

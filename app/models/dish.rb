@@ -1,9 +1,13 @@
 class Dish < ApplicationRecord
   acts_as_list
 
-  TYPE = %w[entree soup chicken beef pork seafood foo\ young\ egg vegetable tofu BBQ fried\ noodle chow\ mein fried\ rice ].map(&:freeze).freeze
+  TYPE = { "entree" => "頭盤", "soup" => "湯類", "chicken" => "雞類", "beef" => "牛肉類",
+           "pork" => "豬肉類", "seafood" => "海鮮類", "foo young egg" => "芙蓉蛋類",
+           "vegetable" => "蔬菜類", "tofu" => "豆腐類", "BBQ" => "BBQ燒味",
+           "fried noodle" => "麵纇", "chow mein" => "炒麵", "fried rice" => "炒飯",
+           "cold dishes" => "冷盤", "set menu" => "套餐" }.freeze
 
-  default_scope { order(position: :asc) }
+  default_scope { order("position asc") }
   scope :entree, -> { where(dish_type: "entree")}
   scope :soup, -> { where(dish_type: "soup")}
   scope :chicken, -> { where(dish_type: "chicken")}

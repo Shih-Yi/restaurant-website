@@ -1,7 +1,8 @@
 <% if type_dishes.length >= 1 %>
   <!-- Section -->
   <!-- Section title-->
-  <div class="menu-section-title"><%= type_dishes.try(:first).try(:dish_type) %>
+  <% dish_type = type_dishes.try(:first).try(:dish_type) %>
+  <div class="menu-section-title"><%= dish_type %><%= " " %><%= Dish::TYPE[dish_type] %>
   </div>
   <div class="menu-section-title-after"></div>
   <!-- size -->
