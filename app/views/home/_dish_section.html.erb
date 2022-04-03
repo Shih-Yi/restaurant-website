@@ -51,7 +51,7 @@
             <div class="menu-item">
               <div class="row menu-item-name-price">
                 <div class="col-8">
-                  <span class="menu-item-name"><%= dish.english_name %></span>
+                  <span class="menu-item-name"><%= dish.english_name.html_safe %></span>
                 </div>
                 <div class="col-2">
                   <span class="menu-item-price"><%= dish.small_price.present? ? '$' + dish.small_price.to_s : 'N/A' %></span>
@@ -61,7 +61,7 @@
                 </div>
               </div>
               <div>
-                <div class="menu-item-description"><%= dish.chinese_name %></div>
+                <div class="menu-item-description"><%= dish.chinese_name.html_safe %></div>
               </div>
             </div>
           </div>
@@ -72,7 +72,7 @@
             <div class="menu-item">
               <div class="row menu-item-name-price">
                 <div class="col-8">
-                  <span class="menu-item-name"><%= dish.english_name %></span>
+                  <span class="menu-item-name"><%= dish.english_name.html_safe %></span>
                 </div>
                 <div class="col-2">
                   <span class="menu-item-price"><%= dish.small_price.present? ? '$' + dish.small_price.to_s : 'N/A' %></span>
@@ -82,7 +82,7 @@
                 </div>
               </div>
               <div>
-                <div class="menu-item-description"><%= dish.chinese_name %></div>
+                <div class="menu-item-description"><%= dish.chinese_name.html_safe %></div>
               </div>
             </div>
           </div>
