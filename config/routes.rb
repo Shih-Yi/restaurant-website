@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   get 'menu', to: 'home#menu'
 
   namespace :admin do
-    root 'dashboard#index'
+    # root 'dashboard#index'
+    get 'dishes?dish_type=entree' => 'dishes#index', as: :root
     resources :dishes do
       member do
         put :update_position
