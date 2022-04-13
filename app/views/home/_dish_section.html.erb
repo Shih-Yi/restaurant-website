@@ -138,14 +138,6 @@
 
       <div class="col-lg-4 mb-3">
         <img
-          src="/menu_pics/chicken/WechatIMG114.jpeg"
-          class="w-100 shadow-1-strong rounded mb-3"
-          alt=""
-        />
-      </div>
-
-      <div class="col-lg-4 mb-3">
-        <img
           src="/menu_pics/chicken/WechatIMG116.jpeg"
           class="w-100 shadow-1-strong rounded mb-3"
           alt=""
@@ -192,17 +184,9 @@
         />
       </div>
 
-      <div class="col-lg-4 col-md-12 mb-3">
+      <div class="col-lg-4 mb-3">
         <img
-          src="/menu_pics/pork/WechatIMG111.jpeg"
-          class="w-100 shadow-1-strong rounded mb-3"
-          alt=""
-        />
-      </div>
-
-      <div class="col-lg-4 col-md-12 mb-3">
-        <img
-          src="/menu_pics/pork/WechatIMG119.jpeg"
+          src="/menu_pics/chicken/WechatIMG114.jpeg"
           class="w-100 shadow-1-strong rounded mb-3"
           alt=""
         />
@@ -238,14 +222,6 @@
 
       <div class="col-lg-4 col-md-12 mb-3">
         <img
-          src="/menu_pics/seafood/WechatIMG102.jpeg"
-          class="w-100 shadow-1-strong rounded mb-3"
-          alt=""
-        />
-      </div>
-
-      <div class="col-lg-4 col-md-12 mb-3">
-        <img
           src="/menu_pics/seafood/WechatIMG113.jpeg"
           class="w-100 shadow-1-strong rounded mb-3"
           alt=""
@@ -254,6 +230,26 @@
     </div>
   <% end %>
 
+  <% if type_dishes.try(:first).try(:dish_type) == 'BBQ' %>
+    <div class="row">
+      <div class="col-lg-4 col-md-12 mb-3">
+        <img
+          src="/menu_pics/pork/WechatIMG111.jpeg"
+          class="w-100 shadow-1-strong rounded mb-3"
+          alt=""
+        />
+      </div>
+
+      <div class="col-lg-4 col-md-12 mb-3">
+        <img
+          src="/menu_pics/pork/WechatIMG119.jpeg"
+          class="w-100 shadow-1-strong rounded mb-3"
+          alt=""
+        />
+      </div>
+    </div>
+  <% end %>
+  
   <% if type_dishes.try(:first).try(:dish_type) == 'fried noodle' %>
     <div class="row">
       <div class="col-lg-4 col-md-12 mb-3">
