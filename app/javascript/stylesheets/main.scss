@@ -285,12 +285,20 @@ header .intro-text {
 #restaurant-menu .size-item {
 	font-size: 18px;
 }
-#restaurant-menu .menu-item-name {
+#restaurant-menu {
 	font-weight: 400;
-	font-size: 20px;
 	color: #444;
 	margin-bottom: 10px;
+
+	.menu-item-name {
+		font-size: 20px;
+	}
+
+	.menu-pic-item-name {
+		font-size: 18px;
+	}
 }
+
 #restaurant-menu .menu-item-description {
 	font-size: 15px;
 	width: 85%;
