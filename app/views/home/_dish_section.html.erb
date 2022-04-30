@@ -96,25 +96,48 @@
     <div class="row">
       <div class="col-lg-4 col-md-12 mb-3">
         <img
-          src="/menu_pics/entree/WechatIMG93.jpeg"
-          class="w-100 shadow-1-strong rounded mb-3"
+          src="/menu_pics/entree/entree_fried_dumpling.jpeg"
+          class="w-100 shadow-1-strong rounded mb-1"
           alt=""
         />
+        <div class="menu-pic-item-name">Fried Dumpling 鍋貼</div>
       </div>
       <div class="col-lg-4 col-md-12 mb-3">
         <img
-          src="/menu_pics/entree/WechatIMG94.jpeg"
-          class="w-100 shadow-1-strong rounded mb-3"
+          src="/menu_pics/entree/entree_deep_fried_squid_tentacle.jpeg"
+          class="w-100 shadow-1-strong rounded mb-1"
           alt=""
         />
+        <div class="menu-pic-item-name">Deep Fried Squid Tentacle 炸魷魚鬚</div>
       </div>
+    </div>
+  <% end %>
 
-      <div class="col-lg-4 mb-3">
+  <% if type_dishes.try(:first).try(:dish_type) == 'soup' %>
+    <div class="row">
+      <div class="col-lg-4 col-md-12 mb-3">
         <img
-          src="/menu_pics/entree/WechatIMG95.jpeg"
-          class="w-100 shadow-1-strong rounded mb-3"
+          src="/menu_pics/soup/soup_wonton_soup.jpeg"
+          class="w-100 shadow-1-strong rounded mb-1"
           alt=""
         />
+        <div class="menu-pic-item-name">Wonton Soup 雲吞湯</div>
+      </div>
+      <div class="col-lg-4 col-md-12 mb-3">
+        <img
+          src="/menu_pics/soup/soup_WechatIMG99.jpeg"
+          class="w-100 shadow-1-strong rounded mb-1"
+          alt=""
+        />
+        <div class="menu-pic-item-name">Chicken Corn Soup玉米湯</div>
+      </div>
+      <div class="col-lg-4 col-md-12 mb-3">
+        <img
+          src="/menu_pics/soup/soup_WechatIMG101.jpeg"
+          class="w-100 shadow-1-strong rounded mb-1"
+          alt=""
+        />
+        <div class="menu-pic-item-name">Chicken Fish Maw Soup 鷄絲魚肚湯</div>
       </div>
     </div>
   <% end %>
@@ -124,25 +147,28 @@
       <div class="col-lg-4 col-md-12 mb-3">
         <img
           src="/menu_pics/chicken/WechatIMG97.jpeg"
-          class="w-100 shadow-1-strong rounded mb-3"
+          class="w-100 shadow-1-strong rounded mb-1"
           alt=""
         />
+        <div class="menu-pic-item-name">Chicken In Yellow Curry Sauce 泰式咖喱鸡</div>
       </div>
       <div class="col-lg-4 col-md-12 mb-3">
         <img
-          src="/menu_pics/chicken/WechatIMG117.jpeg"
-          class="w-100 shadow-1-strong rounded mb-3"
+          src="/menu_pics/chicken/炸子鸡crispy skin chicken.jpeg"
+          class="w-100 shadow-1-strong rounded mb-1"
           alt=""
         />
+        <div class="menu-pic-item-name">Crispy Skin Chicken 炸子鸡</div>
       </div>
-
       <div class="col-lg-4 mb-3">
         <img
-          src="/menu_pics/chicken/WechatIMG116.jpeg"
-          class="w-100 shadow-1-strong rounded mb-3"
+          src="/menu_pics/chicken/Chicken cashew nut腰果鸡.jpeg"
+          class="w-100 shadow-1-strong rounded mb-1"
           alt=""
         />
+        <div class="menu-pic-item-name">Chicken Cashew Nut 腰果鸡</div>
       </div>
+
     </div>
   <% end %>
 
@@ -150,10 +176,20 @@
     <div class="row">
       <div class="col-lg-4 col-md-12 mb-3">
         <img
-          src="/menu_pics/beef/WechatIMG100.jpeg"
-          class="w-100 shadow-1-strong rounded mb-3"
+          src="/menu_pics/beef/Beef with xo sauceXO醬牛柳粒.jpeg"
+          class="w-100 shadow-1-strong rounded mb-1"
           alt=""
         />
+        <div class="menu-pic-item-name">Beef With XO Sauce XO醬牛柳粒</div>
+      </div>
+
+      <div class="col-lg-4 col-md-12 mb-3">
+        <img
+          src="/menu_pics/beef/Ginger spring onion beef 薑蔥牛肉.jpeg"
+          class="w-100 shadow-1-strong rounded mb-1"
+          alt=""
+        />
+        <div class="menu-pic-item-name">Ginger Spring Onion Beef 薑蔥牛肉</div>
       </div>
     </div>
   <% end %>
@@ -162,34 +198,29 @@
     <div class="row">
       <div class="col-lg-4 col-md-12 mb-3">
         <img
-          src="/menu_pics/pork/WechatIMG92.jpeg"
-          class="w-100 shadow-1-strong rounded mb-3"
+          src="/menu_pics/pork/sweet & sour pork 咕嚕肉.jpeg"
+          class="w-100 shadow-1-strong rounded mb-1"
           alt=""
         />
+        <div class="menu-pic-item-name">Sweet & Sour Pork 咕嚕肉</div>
       </div>
 
       <div class="col-lg-4 col-md-12 mb-3">
         <img
-          src="/menu_pics/pork/WechatIMG96.jpeg"
-          class="w-100 shadow-1-strong rounded mb-3"
+          src="/menu_pics/pork/garlic pork rib 蒜香骨.jpeg"
+          class="w-100 shadow-1-strong rounded mb-1"
           alt=""
         />
+        <div class="menu-pic-item-name">Garlic Pork Rib 蒜香骨</div>
       </div>
 
       <div class="col-lg-4 col-md-12 mb-3">
         <img
-          src="/menu_pics/pork/WechatIMG98.jpeg"
-          class="w-100 shadow-1-strong rounded mb-3"
+          src="/menu_pics/pork/Pork rib in supreme sauce 京都骨.jpeg"
+          class="w-100 shadow-1-strong rounded mb-1"
           alt=""
         />
-      </div>
-
-      <div class="col-lg-4 mb-3">
-        <img
-          src="/menu_pics/chicken/WechatIMG114.jpeg"
-          class="w-100 shadow-1-strong rounded mb-3"
-          alt=""
-        />
+        <div class="menu-pic-item-name">Pork Rib In Supreme Sauce 京都骨</div>
       </div>
     </div>
   <% end %>
@@ -198,34 +229,29 @@
     <div class="row">
       <div class="col-lg-4 col-md-12 mb-3">
         <img
-          src="/menu_pics/seafood/WechatIMG118.jpeg"
-          class="w-100 shadow-1-strong rounded mb-3"
+          src="/menu_pics/seafood/Prawn in chili sauce辣汁蝦仁.jpeg"
+          class="w-100 shadow-1-strong rounded mb-1"
           alt=""
         />
+        <div class="menu-pic-item-name">Prawn In Chili Sauce 辣汁蝦仁</div>
       </div>
 
       <div class="col-lg-4 col-md-12 mb-3">
         <img
-          src="/menu_pics/seafood/WechatIMG112.jpeg"
-          class="w-100 shadow-1-strong rounded mb-3"
+          src="/menu_pics/seafood/steamed King prawn with garlic 蒜蓉蒸大蝦.jpeg"
+          class="w-100 shadow-1-strong rounded mb-1"
           alt=""
         />
+        <div class="menu-pic-item-name">Steamed King Prawn With Garlic 蒜蓉蒸大蝦</div>
       </div>
 
       <div class="col-lg-4 col-md-12 mb-3">
         <img
-          src="/menu_pics/seafood/WechatIMG101.jpeg"
-          class="w-100 shadow-1-strong rounded mb-3"
+          src="/menu_pics/seafood/芥末蝦仁Prawn in honey and wasabi sauce.jpeg"
+          class="w-100 shadow-1-strong rounded mb-1"
           alt=""
         />
-      </div>
-
-      <div class="col-lg-4 col-md-12 mb-3">
-        <img
-          src="/menu_pics/seafood/WechatIMG113.jpeg"
-          class="w-100 shadow-1-strong rounded mb-3"
-          alt=""
-        />
+        <div class="menu-pic-item-name">Prawn In Honey And Wasabi Sauce 芥末蝦仁</div>
       </div>
     </div>
   <% end %>
@@ -234,18 +260,62 @@
     <div class="row">
       <div class="col-lg-4 col-md-12 mb-3">
         <img
-          src="/menu_pics/pork/WechatIMG111.jpeg"
-          class="w-100 shadow-1-strong rounded mb-3"
+          src="/menu_pics/BBQ/Roasted Duck燒鴨.jpeg"
+          class="w-100 shadow-1-strong rounded mb-1"
           alt=""
         />
+         <div class="menu-pic-item-name">Roasted Duck 燒鴨</div>
       </div>
-
       <div class="col-lg-4 col-md-12 mb-3">
         <img
-          src="/menu_pics/pork/WechatIMG119.jpeg"
-          class="w-100 shadow-1-strong rounded mb-3"
+          src="/menu_pics/BBQ/Peking Duck片皮鴨.jpeg"
+          class="w-100 shadow-1-strong rounded mb-1"
           alt=""
         />
+        <div class="menu-pic-item-name">Peking Duck 片皮鴨</div>
+      </div>
+      <div class="col-lg-4 mb-3">
+        <img
+          src="/menu_pics/BBQ/Crispy Skin Roasted pork 脆皮燒肉.jpeg"
+          class="w-100 shadow-1-strong rounded mb-1"
+          alt=""
+        />
+        <div class="menu-pic-item-name">Crispy Skin Roasted Pork 脆皮燒肉</div>
+      </div>
+
+      <div class="col-lg-4 mb-3">
+        <img
+          src="/menu_pics/BBQ/Honey BBQ Pork蜜汁叉燒.jpeg"
+          class="w-100 shadow-1-strong rounded mb-1"
+          alt=""
+        />
+        <div class="menu-pic-item-name">Honey BBQ Pork 蜜汁叉燒</div>
+      </div>
+    </div>
+  <% end %>
+
+  <% if type_dishes.try(:first).try(:dish_type) == 'foo young egg' %>
+    <div class="row">
+      <div class="col-lg-4 col-md-12 mb-3">
+        <img
+          src="/menu_pics/foo/Combination foo young egg招牌芙蓉蛋.jpeg"
+          class="w-100 shadow-1-strong rounded mb-1"
+          alt=""
+        />
+        <div class="menu-pic-item-name">Combination Foo Young Egg 招牌芙蓉蛋</div>
+      </div>
+    </div>
+  <% end %>
+
+  <% if type_dishes.try(:first).try(:dish_type) == 'vegetable' %>
+    <div class="row">
+      <div class="col-lg-4 col-md-12 mb-3">
+        <img
+          src="/menu_pics/vegetable/Vegetarian delight.jpeg"
+          class="w-100 shadow-1-strong rounded mb-1"
+          alt=""
+        />
+        <div class="menu-pic-item-name">Vegetarian Delight 八寶菜</div>
       </div>
     </div>
   <% end %>
@@ -254,10 +324,19 @@
     <div class="row">
       <div class="col-lg-4 col-md-12 mb-3">
         <img
-          src="/menu_pics/fried noodle/WechatIMG115.jpeg"
-          class="w-100 shadow-1-strong rounded mb-3"
+          src="/menu_pics/fried noodle/Prawn Fried noodle乾炒蝦面.jpeg"
+          class="w-100 shadow-1-strong rounded mb-1"
           alt=""
         />
+        <div class="menu-pic-item-name">Prawn Fried Noodle 乾炒蝦面</div>
+      </div>
+      <div class="col-lg-4 col-md-12 mb-3">
+        <img
+          src="/menu_pics/fried noodle/Fried Rice stick noodle with beef 乾炒牛河.jpeg"
+          class="w-100 shadow-1-strong rounded mb-1"
+          alt=""
+        />
+        <div class="menu-pic-item-name">Fried Rice Stick Noodle With Beef 乾炒牛河</div>
       </div>
     </div>
   <% end %>
@@ -266,10 +345,11 @@
     <div class="row">
       <div class="col-lg-4 col-md-12 mb-3">
         <img
-          src="/menu_pics/chow mein/WechatIMG99.jpeg"
-          class="w-100 shadow-1-strong rounded mb-3"
+          src="/menu_pics/chow mein/Prawn chow mein 濕炒蝦面.jpeg"
+          class="w-100 shadow-1-strong rounded mb-1"
           alt=""
         />
+        <div class="menu-pic-item-name">Prawn Chow Mein 濕炒蝦面</div>
       </div>
     </div>
   <% end %>
