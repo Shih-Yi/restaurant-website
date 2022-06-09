@@ -14,6 +14,8 @@ import $ from 'jquery'
 window.jQuery = $;
 window.$ = $;
 
+import Swal from 'sweetalert2/dist/sweetalert2.js';
+window.Swal = Swal
 window.toastr = require("toastr");
 
 // scss
