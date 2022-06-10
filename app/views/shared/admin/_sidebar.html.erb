@@ -7,7 +7,7 @@
     <span class="brand-text font-weight-light">AdminLTE 3</span>
   </a> -->
 
-  <a href="<%= admin_dishes_path %>" class="brand-link">
+  <a href="<%= admin_root_path %>" class="brand-link">
     <span class="brand-icon">
       <i class="fas fa-utensils"></i>
     </span>
@@ -44,6 +44,25 @@
       <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu">
         <!-- Add icons to the links using the .nav-icon class
         with font-awesome or any other icon font library -->
+         <li class="nav-item has-treeview">
+          <a href="#" class="nav-link treeview-link">
+            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <p>
+              Notifications
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview" style="display: none;">
+            
+              <li class="nav-item">
+                <a href="<%= admin_notice_path %>" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>home page</p>
+                </a>
+              </li>
+          </ul>
+        </li>
+
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link treeview-link">
             <i class="nav-icon fas fa-tachometer-alt"></i>
