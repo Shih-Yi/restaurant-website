@@ -7,6 +7,17 @@ class Admin::NoticesController < Admin::BaseController
   def edit
   end
 
+  def new
+    @notice = Notice.new
+  end
+
+  def create
+    notice = Notice.new(notice_params)
+    notice.save!
+    flash[:success] = "Create Successfully"
+    redirect_to admin_notice_path
+  end
+
   def update
     @notice.update(notice_params)
     @notice.save!
