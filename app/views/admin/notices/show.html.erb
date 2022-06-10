@@ -12,9 +12,11 @@
             <li class="breadcrumb-item active">Notice</li>
           </ol>
         </div>
-        <div class="col-sm-3">
-          <%= link_to 'Create Reservation', new_admin_notice_path, class: "btn btn-block btn-outline-success" %>
-        </div>
+        <% if @notice.nil? %>
+          <div class="col-sm-3">
+            <%= link_to 'Create Reservation', new_admin_notice_path, class: "btn btn-block btn-outline-success" %>
+          </div>
+        <% end %>
       </div>
     </div>
   </section>
