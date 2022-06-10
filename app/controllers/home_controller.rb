@@ -3,7 +3,7 @@ class HomeController < ApplicationController
     @dishes = Dish.all.order("position asc")
     @entree = @dishes.entree
     @notice = Notice.first
-    @notice_published_active = @notice.published && @notice.active ? true : false
+    @notice_published_active = @notice && @notice.published && @notice.active ? true : false
   end
 
   def menu

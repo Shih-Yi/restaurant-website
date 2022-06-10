@@ -1,8 +1,8 @@
 <script>
   let published_and_active = "<%= raw(@notice_published_active) %>"
-  let title = "<%= raw(@notice.title) %>"
-  let text = "<%=j simple_format(@notice.text) %>"
   if (published_and_active == 'true') {
+    let title = "<%= raw(@notice && @notice.title) %>"
+    let text = "<%=j simple_format(@notice && @notice.text) %>"
     Swal.fire({
       icon: 'info',
       title: title,

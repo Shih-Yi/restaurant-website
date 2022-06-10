@@ -18,31 +18,33 @@
   </section>
 
   <div class="card">
-    <div class="card-header">
-      <label for="title">Title:</label>
-      <%= @notice.title %>
-    </div>
-    <div class="card-body">
-      <label for="start_at">Start At:</label>
-      <p class="card-text"><%= @notice.start_at %></p>
-    </div>
-    <div class="card-body">
-      <label for="end_at">End At:</label>
-      <p class="card-text"><%= @notice.end_at %></p>
-    </div>
-    <div class="card-body">
-      <label for="Text">Text:</label>
-      <p class="card-text"><%= @notice.text %></p>
-    </div>
-    <div class="card-body">
-      <label for="Text">Published:</label>
-      <p class="card-text"><%= @notice.published? ? 'Published' : 'Unpublished' %></p>
-    </div>
-    <div class="card-footer">
-      <label for="Edit">Edit:</label>
-      <%= link_to edit_admin_notice_path do %>
-        <i class="far fa-edit fa-2x"></i>
-      <% end %>
-    </div>
+    <% if @notice.present? %>
+      <div class="card-header">
+        <label for="title">Title:</label>
+        <%= @notice.title %>
+      </div>
+      <div class="card-body">
+        <label for="start_at">Start At:</label>
+        <p class="card-text"><%= @notice.start_at %></p>
+      </div>
+      <div class="card-body">
+        <label for="end_at">End At:</label>
+        <p class="card-text"><%= @notice.end_at %></p>
+      </div>
+      <div class="card-body">
+        <label for="Text">Text:</label>
+        <p class="card-text"><%= @notice.text %></p>
+      </div>
+      <div class="card-body">
+        <label for="Text">Published:</label>
+        <p class="card-text"><%= @notice.published? ? 'Published' : 'Unpublished' %></p>
+      </div>
+      <div class="card-footer">
+        <label for="Edit">Edit:</label>
+        <%= link_to edit_admin_notice_path do %>
+          <i class="far fa-edit fa-2x"></i>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
