@@ -1,0 +1,15 @@
+<script>
+  let published_and_active = "<%= raw(@notice_published_active) %>"
+  let title = "<%= raw(@notice.title) %>"
+  let text = "<%=j simple_format(@notice.text) %>"
+  if (published_and_active == 'true') {
+    Swal.fire({
+      icon: 'info',
+      title: title,
+      html: "<h3>" + text + "<h3>",
+      showCloseButton: true,
+      showConfirmButton: false,
+        footer: '  ',
+    })
+  }
+</script>
