@@ -9,7 +9,11 @@ Rails.application.routes.draw do
 
   namespace :admin do
     # root 'dashboard#index'
-    get 'dishes?dish_type=entree' => 'dishes#index', as: :root
+    get '/' => 'notices#show', as: :root
+
+    resource :notice do
+    end
+
     resources :dishes do
       member do
         put :update_position
