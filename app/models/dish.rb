@@ -9,11 +9,11 @@ class Dish < ApplicationRecord
 
   belongs_to :dish_group
            
-  default_scope { order("position asc") }
-  scope :entree, -> { where(dish_type: "entree")}
-  scope :soup, -> { where(dish_type: "soup")}
-  scope :chicken, -> { where(dish_type: "chicken")}
-  scope :beef, -> { where(dish_type: "beef")}
+  default_scope { order("dishes.position asc") }
+  scope :entree, -> { joins(:dish_group).where(dish_groups: { group_type: "entree" }).order("dishes.position asc") }
+  scope :soup, -> { joins(:dish_group).where(dish_groups: { group_type: "soup" }).order("dishes.position asc") }
+  scope :chicken, -> { joins(:dish_group).where(dish_groups: { group_type: "chicken" }).order("dishes.position asc") }
+  scope :beef, -> { joins(:dish_group).where(dish_groups: { group_type: "beef" }).order("dishes.position asc") }
 
   before_create do
     self.position ||= self.class.all.size + 1

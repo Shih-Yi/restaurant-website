@@ -68,6 +68,6 @@ class Admin::DishesController < Admin::BaseController
   end
 
   def dish_params
-    params.require(:dish).permit(:dish_type, :english_name, :chinese_name, :small_price, :large_price, :description, :dish_group_id)
+    params.require(:dish).permit(:english_name, :chinese_name, :small_price, :large_price, :description, :dish_group_id)
   end
 end
