@@ -19,8 +19,17 @@
       <div class="section-title text-center">
         Menu
       </div>
-      <% @dishes_types_array.each do |type_dishes| %>
-        <%= render 'dish_section', type_dishes: type_dishes %>
+      
+      <!-- DishGroup -->
+      <% @dish_groups_array.each do |group_data| %>
+        <%= render 'dish_group_section', group_data: group_data %>
       <% end %>
+      
+      <!-- 
+      <% if @dish_groups_array.empty? %>
+        <% @dishes_types_array.each do |type_dishes| %>
+          <%= render 'dish_section', type_dishes: type_dishes %>
+        <% end %>
+      <% end %>  -->
     </div>
   </div>

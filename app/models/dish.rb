@@ -7,6 +7,8 @@ class Dish < ApplicationRecord
            "fried noodle" => "乾炒麵", "chow mein" => "濕炒麵", "fried rice" => "炒飯",
            "cold dishes" => "冷盤", "set menu" => "套餐" }.freeze
 
+  belongs_to :dish_group
+           
   default_scope { order("position asc") }
   scope :entree, -> { where(dish_type: "entree")}
   scope :soup, -> { where(dish_type: "soup")}

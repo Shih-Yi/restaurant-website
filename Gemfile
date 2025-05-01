@@ -29,6 +29,10 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise', github: 'heartcombo/devise', branch: "master"
 # An ActiveRecord plugin for managing lists
 gem 'acts_as_list'
+# File uploads made simple
+gem 'carrierwave', '~> 2.2'
+# Image processing for CarrierWave
+gem 'mini_magick', '~> 4.11'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
