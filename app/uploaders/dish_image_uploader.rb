@@ -37,6 +37,10 @@ class DishImageUploader < CarrierWave::Uploader::Base
     process resize_to_fit: [400, 400]
   end
 
+  def size_range
+    0..6.megabytes
+  end
+
   # Add an allowlist of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_allowlist

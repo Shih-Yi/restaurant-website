@@ -1,29 +1,34 @@
 <%= form_with(model: [:admin, dish_group], local: true, html: { multipart: true, class: "form" }) do |form| %>
+
+  <% if flash[:error].present? %>
+    <div class="alert alert-danger mb-4">
+      <%= flash[:error] %>
+    </div>
+  <% end %>
+
+  <% if dish_group.errors[:base].any? %>
+    <div class="alert alert-danger mb-4">
+      <ul class="mb-0">
+        <% dish_group.errors[:base].each do |error| %>
+          <li><%= error %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div class="form-group">
-    <%= form.label :name, "名稱" %>
-    <%= form.text_field :name, class: "form-control" %>
+    <h4>Group Type: <%= dish_group.group_type.upcase %></h4>
   </div>
 
   <div class="form-group">
-    <%= form.label :group_type, "群組類型" %>
-    <%= form.text_field :group_type, class: "form-control", placeholder: "例如：chinese, western, seafood" %>
-    <small class="form-text text-muted">請使用英文小寫，用於系統分類</small>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :description, "描述" %>
-    <%= form.text_area :description, class: "form-control", rows: 3 %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :published, "是否發布" %>
+    <%= form.label :published, "Publish?" %>
     <%= form.check_box :published, class: "ml-2" %>
   </div>
 
   <!-- 圖片管理區 -->
   <div class="card mb-4">
     <div class="card-header d-flex justify-content-between align-items-center">
-      <h5 class="mb-0">圖片管理</h5>
+      <h5 class="mb-0">Image Management</h5>
       
     </div>
     <div class="card-body">
@@ -31,12 +36,13 @@
       <!-- Cocoon 嵌套表單 -->
       <div class="cocoon-nested-form" style="padding: 20px; background-color: #f8f9fa; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-bottom: 20px;">
         <div class="d-flex justify-content-between align-items-center mb-3">
-          <h6 class="mb-0" style="color: #495057; font-weight: 600;">圖片管理</h6>
-          <%= link_to_add_association '添加圖片', form, :dish_group_images, 
+          <h6 class="mb-0" style="color: #495057; font-weight: 600;">Images (<span id="image-count">0</span>/6)</h6>
+          <%= link_to_add_association 'Add Image', form, :dish_group_images, 
               class: 'btn btn-outline-primary btn-sm',
               data: {
                 association_insertion_node: '#dish-group-images',
-                association_insertion_method: 'append'
+                association_insertion_method: 'append',
+                maximum_images: 6
               } %>
         </div>
         <div id="dish-group-images" class="row">
@@ -49,8 +55,8 @@
   </div>
 
   <div class="form-group">
-    <%= form.submit "儲存", class: "btn btn-primary" %>
-    <%= link_to "返回", admin_dish_groups_path, class: "btn btn-secondary" %>
+    <%= form.submit "Save", class: "btn btn-primary" %>
+    <%= link_to "Back", admin_dish_groups_path, class: "btn btn-secondary" %>
   </div>
 <% end %>
 
@@ -59,6 +65,31 @@
   $(document).on("cocoon:before-remove", 
     function(e, removedItem, originalEvent) {
       removedItem.parent().hide();
+      updateImageCount();
     }
-  )
+  );
+
+  // 更新圖片計數
+  function updateImageCount() {
+    const count = $('#dish-group-images .nested-fields').length;
+    $('#image-count').text(count);
+    
+    // 如果達到最大數量，禁用添加按鈕
+    const addButton = $('.add_fields');
+    if (count >= 6) {
+      addButton.addClass('disabled').prop('disabled', true);
+    } else {
+      addButton.removeClass('disabled').prop('disabled', false);
+    }
+  }
+
+  // 初始化計數
+  $(document).ready(function() {
+    updateImageCount();
+  });
+
+  // 當添加新圖片時更新計數
+  $(document).on('cocoon:after-insert', function() {
+    updateImageCount();
+  });
 </script>

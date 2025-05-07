@@ -15,9 +15,10 @@ class Admin::DishGroupsController < Admin::BaseController
   def create
     @dish_group = DishGroup.new(dish_group_params)
     
-    if @dish_group.save!
+    if @dish_group.save
       redirect_to admin_dish_groups_path, notice: "Create Success!"
     else
+      flash.now[:error] = @dish_group.errors.full_messages.join(", ")
       render :new
     end
   end
@@ -31,6 +32,8 @@ class Admin::DishGroupsController < Admin::BaseController
     if @dish_group.update(dish_group_params)
       redirect_to admin_dish_groups_path, notice: "Update Success!"
     else
+      flash.now[:error] = @dish_group.errors.full_messages.join(", ")
+      @dish_group.dish_group_images.build if @dish_group.dish_group_images.empty?
       render :edit
     end
   end
