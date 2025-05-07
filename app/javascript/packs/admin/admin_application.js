@@ -24,11 +24,26 @@ import Swal from 'sweetalert2/dist/sweetalert2.js';
 window.Swal = Swal
 window.toastr = require("toastr");
 
+// 添加 Cocoon 支持
+import "@nathanvda/cocoon";
+
 // scss
 import "../../stylesheets/admin/admin_application"
 
 // custom js
-
+document.addEventListener('DOMContentLoaded', function() {
+  // Cocoon 新增嵌套表單
+  document.addEventListener('cocoon:after-insert', function(e) {
+    // 可以在這裡添加新增表單後的回調
+    console.log('新表單已添加');
+  });
+  
+  // Cocoon 移除嵌套表單
+  document.addEventListener('cocoon:after-remove', function(e) {
+    // 可以在這裡添加移除表單後的回調
+    console.log('表單已移除');
+  });
+});
 
 Rails.start()
 // Turbolinks.start()

@@ -27,7 +27,10 @@ class HomeController < ApplicationController
           group_type: dish_group.group_type,
           name: dish_group.name,
           dishes: group_dishes,
-          dish_group: dish_group
+          group_info: {
+            dish_group: dish_group,
+            images: dish_group.images
+          }
         }
       end
     end

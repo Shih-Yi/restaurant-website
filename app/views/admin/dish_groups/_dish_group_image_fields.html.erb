@@ -1,0 +1,184 @@
+<div class="col-4">
+  <div class='nested-fields'>
+    <!-- image -->
+    <div class="form-group">
+      <label class="uploader" style="display: block; width: 100%; padding: 25px; text-align: center; background: #f8f9fa; border: 2px dashed #dee2e6; border-radius: 8px; cursor: pointer; transition: all 0.3s ease;">
+        <span class="icon" style="display: block; margin-bottom: 10px; color: #6c757d;">
+          <i class="fas fa-cloud-upload-alt fa-2x"></i>
+        </span>
+        <span class="placeholder" style="display: block; font-size: 14px; color: #495057; margin-bottom: 10px;">
+          <% if f.object.image.present? %>
+            <span style="color: #28a745; font-weight: 500;">
+              File uploaded <%= link_to f.object.image.identifier, f.object.image.url, target: "_blank", style: "color: #007bff; text-decoration: underline;" %>
+            </span>
+          <% else %>
+            <span>Click or drag file here to upload</span>
+            <br>
+            <small style="color: #6c757d; font-size: 12px; display: block; margin-top: 5px;">Supported formats: JPG, PNG, GIF</small>
+          <% end %>
+        </span>
+        <%= f.file_field :image, class: "form-control file-upload-input", style: "display: none;" %>
+      </label>
+      <!-- 統一的圖片預覽容器 -->
+      <div class="image-preview mt-2" style="text-align: center; <%= 'display: none;' unless f.object.image.present? %>">
+        <% if f.object.image.present? %>
+          <!-- 已儲存的圖片 -->
+          <%= image_tag f.object.image.url, class: "img-thumbnail preview-image", style: "max-height: 150px; max-width: 100%;" %>
+        <% else %>
+          <!-- 新上傳的圖片預覽 -->
+          <img src="" class="img-thumbnail preview-image" style="max-height: 150px; max-width: 100%;">
+        <% end %>
+      </div>
+    </div>
+    
+    <!-- 圖片標題編輯 -->
+    <div class="form-group">
+      <%= f.label :title, "Image Title", class: "form-label" %>
+      <%= f.text_field :title, class: "form-control", placeholder: "Enter a descriptive title for this image" %>
+      <small class="form-text text-muted">Add a title to help identify this image (optional)</small>
+    </div>
+    
+    <%= link_to_remove_association "Delete this file", f %>
+    <br/>
+    <hr/>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // 初始化現有的檔案上傳輸入框
+    initializeFileUploads();
+  });
+  
+  // Cocoon:after-insert 事件處理 - 當添加新表單時
+  $(document).on('cocoon:after-insert', function(e, insertedItem) {
+    // 初始化新添加的檔案上傳輸入框
+    const fileInput = insertedItem.find('.file-upload-input');
+    if (fileInput.length) {
+      initializeFileUpload(fileInput[0]);
+    }
+  });
+  
+  // 初始化所有檔案上傳輸入框
+  function initializeFileUploads() {
+    document.querySelectorAll('.file-upload-input').forEach(function(input) {
+      initializeFileUpload(input);
+    });
+  }
+  
+  // 初始化單個檔案上傳輸入框
+  function initializeFileUpload(input) {
+    // 找到相關元素
+    const container = input.closest('.nested-fields');
+    if (!container) return;
+    
+    const uploaderLabel = container.querySelector('label.uploader');
+    if (!uploaderLabel) return;
+    
+    // 處理文件選擇事件
+    input.addEventListener('change', function(e) {
+      handleFileSelection(this, e.target.files[0]);
+    });
+    
+    // 使 label 元素在 hover 時改變樣式
+    uploaderLabel.addEventListener('mouseenter', function() {
+      this.style.borderColor = '#007bff';
+      this.style.backgroundColor = '#e9f7fe';
+    });
+    
+    uploaderLabel.addEventListener('mouseleave', function() {
+      this.style.borderColor = '#dee2e6';
+      this.style.backgroundColor = '#f8f9fa';
+    });
+    
+    // 添加拖放事件處理
+    setupDragAndDrop(uploaderLabel, input);
+  }
+  
+  // 設置拖放功能
+  function setupDragAndDrop(dropZone, fileInput) {
+    // 阻止默認拖放行為
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+      dropZone.addEventListener(eventName, preventDefaults, false);
+      document.body.addEventListener(eventName, preventDefaults, false);
+    });
+    
+    // 突出顯示拖放區域
+    ['dragenter', 'dragover'].forEach(eventName => {
+      dropZone.addEventListener(eventName, function() {
+        highlight(dropZone);
+      }, false);
+    });
+    
+    ['dragleave', 'drop'].forEach(eventName => {
+      dropZone.addEventListener(eventName, function() {
+        unhighlight(dropZone);
+      }, false);
+    });
+    
+    // 處理拖放的文件
+    dropZone.addEventListener('drop', function(e) {
+      const dt = e.dataTransfer;
+      const file = dt.files[0];
+      
+      // 只處理第一個文件
+      if (file) {
+        // 設置文件到文件輸入框
+        fileInput.files = dt.files;
+        // 處理文件選擇
+        handleFileSelection(fileInput, file);
+      }
+    }, false);
+  }
+  
+  // 阻止默認拖放行為
+  function preventDefaults(e) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+  
+  // 突出顯示拖放區域
+  function highlight(element) {
+    element.style.borderColor = '#28a745';
+    element.style.backgroundColor = '#e8f5e9';
+    element.style.borderStyle = 'solid';
+  }
+  
+  // 取消突出顯示
+  function unhighlight(element) {
+    element.style.borderColor = '#dee2e6';
+    element.style.backgroundColor = '#f8f9fa';
+    element.style.borderStyle = 'dashed';
+  }
+  
+  // 處理文件選擇
+  function handleFileSelection(inputElement, file) {
+    if (!file) return;
+    
+    // 找到相應的容器元素
+    const container = inputElement.closest('.nested-fields');
+    if (!container) return;
+    
+    // 更新佔位符文本
+    const placeholder = container.querySelector('.placeholder');
+    if (placeholder) {
+      placeholder.innerHTML = '<span style="color: #28a745; font-weight: 500;">Selected file: ' + file.name + '</span>';
+    }
+    
+    // 找到預覽容器和圖片
+    const previewContainer = container.querySelector('.image-preview');
+    const previewImage = container.querySelector('.preview-image');
+    
+    if (previewContainer && previewImage) {
+      // 確保預覽容器可見
+      previewContainer.style.display = 'block';
+      
+      // 使用 FileReader 讀取並顯示圖片
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        previewImage.src = event.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+</script>

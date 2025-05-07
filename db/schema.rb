@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_05_02_050000) do
+ActiveRecord::Schema.define(version: 2025_05_01_014404) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,13 +32,24 @@ ActiveRecord::Schema.define(version: 2024_05_02_050000) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "dish_group_images", force: :cascade do |t|
+    t.bigint "dish_group_id", null: false
+    t.string "image"
+    t.string "title"
+    t.integer "position"
+    t.string "image_type"
+    t.string "image_size"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["dish_group_id"], name: "index_dish_group_images_on_dish_group_id"
+  end
+
   create_table "dish_groups", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.string "group_type"
     t.integer "position"
     t.boolean "published", default: true
-    t.json "images"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -68,5 +79,6 @@ ActiveRecord::Schema.define(version: 2024_05_02_050000) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "dish_group_images", "dish_groups"
   add_foreign_key "dishes", "dish_groups"
 end

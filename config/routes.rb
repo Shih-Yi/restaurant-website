@@ -19,5 +19,11 @@ Rails.application.routes.draw do
         put :update_position
       end
     end
+    
+    resources :dish_groups do
+      member do
+        put :update_position
+      end
+    end
   end
 end
