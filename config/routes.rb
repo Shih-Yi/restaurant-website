@@ -25,5 +25,9 @@ Rails.application.routes.draw do
         put :update_position
       end
     end
+
+    get 'dashboard/edit_background_images', to: 'dashboard#edit_background_images', as: :edit_background_images
+    post 'dashboard/edit_background_images', to: 'dashboard#edit_background_images'
+    delete 'dashboard/remove_background_image', to: 'dashboard#remove_background_image', as: :remove_background_image
   end
 end

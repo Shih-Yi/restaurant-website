@@ -79,6 +79,13 @@ ActiveRecord::Schema.define(version: 2025_05_01_014404) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "settings", force: :cascade do |t|
+    t.string "intro_image"
+    t.string "menu_image"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   add_foreign_key "dish_group_images", "dish_groups"
   add_foreign_key "dishes", "dish_groups"
 end

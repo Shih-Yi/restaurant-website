@@ -1,0 +1,291 @@
+<div class="content-wrapper px-2 py-2">
+  <div class="container mt-4">
+    <h1 class="mb-4">Background Images</h1>
+
+    <div class="card mb-4">
+      <%# <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Image Management</h5>
+      </div> %>
+      <div class="card-body">
+        <%= form_with model: @setting, url: admin_dashboard_edit_background_images_path, local: true, method: :post, html: { multipart: true } do |form| %>
+          <div class="row">
+            <div class="col-6 image-container">
+              <div class='nested-fields'>
+                <div class="form-group">
+                  <div class="form-group mt-2">
+                    <label>Intro Background Image</label>
+                      <div class="default-image-info mt-2 p-2" style="background-color: #f8f8f8; border: 1px solid #ddd; border-radius: 4px;">
+                        <div class="d-flex align-items-center">
+                          <div class="mr-3">
+                            <img src="<%= asset_pack_path('media/image/home/intro-bg.jpg') %>" class="img-thumbnail" style="max-height: 100px; max-width: 150px;">
+                          </div>
+                          <div>
+                            <p class="mb-1"><strong>Using default image</strong></p>
+                            <small class="text-muted">Upload a new image to replace the default.</small>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                  <label class="uploader" style="display: block; width: 100%; padding: 25px; text-align: center; background: #f8f9fa; border: 2px dashed #dee2e6; border-radius: 8px; cursor: pointer; transition: all 0.3s ease;">
+                    <span class="icon" style="display: block; margin-bottom: 10px; color: #6c757d;">
+                      <i class="fas fa-cloud-upload-alt fa-2x"></i>
+                    </span>
+                    <span class="placeholder" style="display: block; font-size: 14px; color: #495057; margin-bottom: 10px;">
+                      <% if form.object.intro_image.present? %>
+                        <span style="color: #28a745; font-weight: 500;">
+                          File uploaded <%= link_to form.object.intro_image.identifier, form.object.intro_image.url, target: "_blank", style: "color: #007bff; text-decoration: underline;" %>
+                        </span>
+                      <% else %>
+                        <span>Click or drag file here to upload</span>
+                        <br>
+                        <small style="color: #6c757d; font-size: 12px; display: block; margin-top: 5px;">Supported formats: JPG, PNG, GIF</small>
+                      <% end %>
+                    </span>
+                    <%= form.file_field :intro_image, class: "form-control file-upload-input", style: "display: none;" %>
+                  </label>
+                  <div class="image-preview mt-2" style="text-align: center; <%= 'display: none;' unless form.object.intro_image.present? %>">
+                    <% if form.object.intro_image.present? %>
+                      <%= image_tag form.object.intro_image.url, class: "img-thumbnail preview-image", style: "max-height: 150px; max-width: 100%;" %>
+                    <% else %>
+                      <img src="" class="img-thumbnail preview-image" style="max-height: 150px; max-width: 100%;">
+                    <% end %>
+                    <% if form.object.intro_image.present? %>
+                      <div class="mt-2 d-flex justify-content-center">
+                        <%= link_to "Delete Image", "javascript:void(0)", 
+                            class: "btn btn-danger btn-sm delete-image-btn",
+                            data: { type: "intro_image" } %>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 image-container">
+              <div class='nested-fields'>
+                <div class="form-group">
+                  <div class="form-group mt-2">
+                    <label>Menu Background Image</label>
+                      <div class="default-image-info mt-2 p-2" style="background-color: #f8f8f8; border: 1px solid #ddd; border-radius: 4px;">
+                        <div class="d-flex align-items-center">
+                          <div class="mr-3">
+                            <img src="<%= asset_pack_path('media/image/home/menu-bg.jpg') %>" class="img-thumbnail" style="max-height: 100px; max-width: 150px;">
+                          </div>
+                          <div>
+                            <p class="mb-1"><strong>Using default image</strong></p>
+                            <small class="text-muted">Upload a new image to replace the default.</small>
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                  <label class="uploader" style="display: block; width: 100%; padding: 25px; text-align: center; background: #f8f9fa; border: 2px dashed #dee2e6; border-radius: 8px; cursor: pointer; transition: all 0.3s ease;">
+                    <span class="icon" style="display: block; margin-bottom: 10px; color: #6c757d;">
+                      <i class="fas fa-cloud-upload-alt fa-2x"></i>
+                    </span>
+                    <span class="placeholder" style="display: block; font-size: 14px; color: #495057; margin-bottom: 10px;">
+                      <% if form.object.menu_image.present? %>
+                        <span style="color: #28a745; font-weight: 500;">
+                          File uploaded <%= link_to form.object.menu_image.identifier, form.object.menu_image.url, target: "_blank", style: "color: #007bff; text-decoration: underline;" %>
+                        </span>
+                      <% else %>
+                        <span>Click or drag file here to upload</span>
+                        <br>
+                        <small style="color: #6c757d; font-size: 12px; display: block; margin-top: 5px;">Supported formats: JPG, PNG, GIF</small>
+                      <% end %>
+                    </span>
+                    <%= form.file_field :menu_image, class: "form-control file-upload-input", style: "display: none;" %>
+                  </label>
+                  <div class="image-preview mt-2" style="text-align: center; <%= 'display: none;' unless form.object.menu_image.present? %>">
+                    <% if form.object.menu_image.present? %>
+                      <%= image_tag form.object.menu_image.url, class: "img-thumbnail preview-image", style: "max-height: 150px; max-width: 100%;" %>
+                    <% else %>
+                      <img src="" class="img-thumbnail preview-image" style: "max-height: 150px; max-width: 100%;">
+                    <% end %>
+                    <% if form.object.menu_image.present? %>
+                      <div class="mt-2 d-flex justify-content-center">
+                        <%= link_to "Delete Image", "javascript:void(0)", 
+                            class: "btn btn-danger btn-sm delete-image-btn",
+                            data: { type: "menu_image" } %>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-4">
+            <%= form.submit "Upload", class: "btn btn-primary mt-3" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    initializeFileUploads();
+    setupDeleteImageButtons();
+  });
+
+  function initializeFileUploads() {
+    document.querySelectorAll('.file-upload-input').forEach(function(input) {
+      initializeFileUpload(input);
+    });
+  }
+
+  function initializeFileUpload(input) {
+    const container = input.closest('.nested-fields');
+    if (!container) return;
+
+    const uploaderLabel = container.querySelector('label.uploader');
+    if (!uploaderLabel) return;
+
+    input.addEventListener('change', function(e) {
+      handleFileSelection(this, e.target.files[0]);
+    });
+
+    uploaderLabel.addEventListener('mouseenter', function() {
+      this.style.borderColor = '#007bff';
+      this.style.backgroundColor = '#e9f7fe';
+    });
+
+    uploaderLabel.addEventListener('mouseleave', function() {
+      this.style.borderColor = '#dee2e6';
+      this.style.backgroundColor = '#f8f9fa';
+    });
+
+    setupDragAndDrop(uploaderLabel, input);
+  }
+
+  function setupDragAndDrop(dropZone, fileInput) {
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+      dropZone.addEventListener(eventName, preventDefaults, false);
+      document.body.addEventListener(eventName, preventDefaults, false);
+    });
+
+    ['dragenter', 'dragover'].forEach(eventName => {
+      dropZone.addEventListener(eventName, function() {
+        highlight(dropZone);
+      }, false);
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+      dropZone.addEventListener(eventName, function() {
+        unhighlight(dropZone);
+      }, false);
+    });
+
+    dropZone.addEventListener('drop', function(e) {
+      const dt = e.dataTransfer;
+      const file = dt.files[0];
+
+      if (file) {
+        fileInput.files = dt.files;
+        handleFileSelection(fileInput, file);
+      }
+    }, false);
+  }
+
+  function preventDefaults(e) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+
+  function highlight(element) {
+    element.style.borderColor = '#28a745';
+    element.style.backgroundColor = '#e8f5e9';
+    element.style.borderStyle = 'solid';
+  }
+
+  function unhighlight(element) {
+    element.style.borderColor = '#dee2e6';
+    element.style.backgroundColor = '#f8f9fa';
+    element.style.borderStyle = 'dashed';
+  }
+
+  function handleFileSelection(inputElement, file) {
+    if (!file) return;
+
+    const container = inputElement.closest('.nested-fields');
+    if (!container) return;
+
+    const placeholder = container.querySelector('.placeholder');
+    if (placeholder) {
+      placeholder.innerHTML = '<span style="color: #28a745; font-weight: 500;">Selected file: ' + file.name + '</span>';
+    }
+
+    const previewContainer = container.querySelector('.image-preview');
+    const previewImage = container.querySelector('.preview-image');
+
+    if (previewContainer && previewImage) {
+      previewContainer.style.display = 'block';
+
+      const reader = new FileReader();
+      reader.onload = function(event) {
+        previewImage.src = event.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  // Setup delete image buttons with SweetAlert confirmation
+  function setupDeleteImageButtons() {
+    document.querySelectorAll('.delete-image-btn').forEach(function(button) {
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
+        const imageType = this.dataset.type;
+        const imageTypeName = imageType === 'intro_image' ? 'Intro Background' : 'Menu Background';
+        
+        Swal.fire({
+          title: 'Are you sure?',
+          html: `<div>
+                  <p>You are about to delete the <strong>${imageTypeName}</strong> image.</p>
+                  <p>The default image will be used instead.</p>
+                </div>`,
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#dc3545',
+          cancelButtonColor: '#6c757d',
+          confirmButtonText: 'Yes, delete it!',
+          cancelButtonText: 'Cancel',
+          reverseButtons: true
+        }).then((result) => {
+          if (result.isConfirmed) {
+            // Create a form and submit it
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = '<%= admin_remove_background_image_path %>';
+            form.style.display = 'none';
+            
+            // Add CSRF token
+            const csrfToken = document.createElement('input');
+            csrfToken.type = 'hidden';
+            csrfToken.name = '<%= request_forgery_protection_token %>';
+            csrfToken.value = '<%= form_authenticity_token %>';
+            form.appendChild(csrfToken);
+            
+            // Add method field
+            const methodField = document.createElement('input');
+            methodField.type = 'hidden';
+            methodField.name = '_method';
+            methodField.value = 'delete';
+            form.appendChild(methodField);
+            
+            // Add type field
+            const typeField = document.createElement('input');
+            typeField.type = 'hidden';
+            typeField.name = 'type';
+            typeField.value = imageType;
+            form.appendChild(typeField);
+            
+            // Append form to body and submit
+            document.body.appendChild(form);
+            form.submit();
+          }
+        });
+      });
+    });
+  }
+</script>
