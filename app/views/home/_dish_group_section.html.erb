@@ -1,4 +1,4 @@
-<% if group_data[:dishes].present? %>
+<% if group_data[:dishes].present? && group_data[:group_info][:dish_group].published? %>
 
     <h3 class="menu-section-title"><%= group_data[:name] %> <%= Dish::TYPE[group_data[:group_type]] %></h3>
     <div class="menu-section-title-after"></div>

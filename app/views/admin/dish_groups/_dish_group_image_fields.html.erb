@@ -1,4 +1,4 @@
-<div class="col-4">
+<div class="col-4 image-container">
   <div class='nested-fields'>
     <!-- image -->
     <div class="form-group">
@@ -46,7 +46,13 @@
       <%= f.text_field :title, class: "form-control", placeholder: "Enter a descriptive title for this image" %>
     </div>
     
-    <%= link_to_remove_association "Delete this file", f %>
+    <div class="form-group">
+      <%= f.hidden_field :_destroy, class: 'destroy-flag' %>
+      <%= link_to_remove_association "Delete this file", f, 
+          class: 'btn btn-outline-danger btn-sm delete-image'
+       %>
+    </div>
+    
     <br/>
     <hr/>
   </div>

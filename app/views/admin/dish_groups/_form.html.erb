@@ -21,8 +21,10 @@
   </div>
 
   <div class="form-group">
-    <%= form.label :published, "Publish?" %>
-    <%= form.check_box :published, class: "ml-2" %>
+    <div class="custom-control custom-switch">
+      <%= form.check_box :published, class: "custom-control-input", id: "publishSwitch" %>
+      <%= form.label :published, "Publish?", class: "custom-control-label", for: "publishSwitch" %>
+    </div>
   </div>
 
   <!-- 圖片管理區 -->
@@ -61,17 +63,31 @@
 <% end %>
 
 <script>
-  // cocoon remove element callbacks
-  $(document).on("cocoon:before-remove", 
-    function(e, removedItem, originalEvent) {
-      removedItem.parent().hide();
-      updateImageCount();
+  // Cocoon callbacks for removal
+  $(document).on("cocoon:before-remove", function(e, removedItem) {
+    // 確保_destroy標記被設置為1
+    var destroyField = removedItem.find('.destroy-flag');
+    if (destroyField.length) {
+      destroyField.val('1');
+      console.log("Set _destroy to 1 for item");
+    } else {
+      console.error("Could not find _destroy field");
     }
-  );
+    
+    // 找到外層容器元素並隱藏
+    const container = removedItem.closest('.image-container');
+    if (container) {
+      container.fadeOut('fast');
+    }
+  });
+  
+  $(document).on("cocoon:after-remove", function() {
+    updateImageCount();
+  });
 
   // 更新圖片計數
   function updateImageCount() {
-    const count = $('#dish-group-images .nested-fields').length;
+    const count = $('#dish-group-images .image-container:visible').length;
     $('#image-count').text(count);
     
     // 如果達到最大數量，禁用添加按鈕
@@ -83,13 +99,48 @@
     }
   }
 
-  // 初始化計數
+  // 初始化頁面
   $(document).ready(function() {
+    // 檢查並隱藏已標記為刪除的元素
+    $('.nested-fields').each(function() {
+      const destroyInput = $(this).find('.destroy-flag');
+      if (destroyInput.length && destroyInput.val() === '1') {
+        $(this).closest('.image-container').hide();
+      }
+    });
+    
+    // 手動刪除按鈕功能 (不依賴 Cocoon)
+    $(document).on('click', '.delete-image', function(e) {
+      const destroyField = $(this).siblings('.destroy-flag');
+      if (destroyField.length) {
+        destroyField.val('1');
+        $(this).closest('.image-container').fadeOut('fast');
+        updateImageCount();
+      }
+    });
+    
+    // 初始化計數
     updateImageCount();
   });
 
   // 當添加新圖片時更新計數
-  $(document).on('cocoon:after-insert', function() {
+  $(document).on('cocoon:after-insert', function(e, insertedItem) {
     updateImageCount();
+    
+    // 確保新添加的元素可見
+    insertedItem.closest('.image-container').show();
+  });
+  
+  // 表單提交前確保刪除標記正確
+  $(document).on('submit', 'form', function() {
+    console.log("Form submitting, checking destroy flags...");
+    $('.destroy-flag').each(function() {
+      const container = $(this).closest('.image-container');
+      if (container.is(':hidden') && $(this).val() !== '1') {
+        console.log("Fixing hidden container destroy flag");
+        $(this).val('1');
+      }
+    });
+    return true;
   });
 </script>
