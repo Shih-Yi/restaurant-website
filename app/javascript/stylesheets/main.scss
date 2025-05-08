@@ -299,8 +299,62 @@ header .intro-text {
 	}
 }
 
+/* Menu Section */
+
+
+
+.menu-section-title {
+  font-size: 2.2rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.menu-item-name {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+.menu-item-description {
+  color: #555;
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+}
+.menu-item-price {
+  font-weight: 700;
+  color: #333;
+  font-size: 1.15rem;
+  border-radius: 5px;
+  padding: 4px 10px;
+}
+.menu-section {
+  margin-bottom: 1.5rem;
+}
+.menu-pic-item-name {
+  text-align: center;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  color: #333;
+}
+.menu-section-img, .img-thumbnail.preview-image {
+  border-radius: 12px;
+  transition: transform 0.2s;
+}
+.menu-section-img:hover {
+  transform: scale(1.04);
+}
+
+ .menu-section-img, .img-thumbnail.preview-image {
+  border-radius: 14px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.menu-section-img:hover {
+  transform: scale(1.05);
+}
+
+
 #restaurant-menu .menu-item-description {
-	font-size: 15px;
 	width: 85%;
 }
 #restaurant-menu .menu-item-price {

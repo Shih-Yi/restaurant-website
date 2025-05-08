@@ -1,6 +1,11 @@
 <% if group_data[:dishes].present? && group_data[:group_info][:dish_group].published? %>
 
-    <h3 class="menu-section-title"><%= group_data[:name] %> <%= Dish::TYPE[group_data[:group_type]] %></h3>
+    <h3 class="menu-section-title">
+      <%= group_data[:name] %>
+      <div style="font-size:1.1rem; font-weight:400; letter-spacing:1px;">
+        <%= Dish::TYPE[group_data[:group_type]] %>
+      </div>
+    </h3>
     <div class="menu-section-title-after"></div>
 
       <!-- size -->
@@ -53,10 +58,10 @@
                   <span class="menu-item-name"><%= dish.english_name.html_safe %></span>
                 </div>
                 <div class="col-2">
-                  <span class="menu-item-price"><%= dish.small_price.present? ? '$' + dish.small_price.to_s : 'N/A' %></span>
+                  <span class="menu-item-price" style="font-size:1.1rem;"><%= dish.small_price.present? ? '$' + dish.small_price.to_s : 'N/A' %></span>
                 </div>
                 <div class="col-2">
-                  <span class="menu-item-price"><%= dish.large_price.present? ? '$' + dish.large_price.to_s : 'N/A' %></span>
+                  <span class="menu-item-price" style="font-size:1.1rem;"><%= dish.large_price.present? ? '$' + dish.large_price.to_s : 'N/A' %></span>
                 </div>
               </div>
               <div>
@@ -74,10 +79,10 @@
                   <span class="menu-item-name"><%= dish.english_name.html_safe %></span>
                 </div>
                 <div class="col-2">
-                  <span class="menu-item-price"><%= dish.small_price.present? ? '$' + dish.small_price.to_s : 'N/A' %></span>
+                  <span class="menu-item-price" style="font-size:1.1rem;"><%= dish.small_price.present? ? '$' + dish.small_price.to_s : 'N/A' %></span>
                 </div>
                 <div class="col-2">
-                  <span class="menu-item-price"><%= dish.large_price.present? ? '$' + dish.large_price.to_s : 'N/A' %></span>
+                  <span class="menu-item-price" style="font-size:1.1rem;"><%= dish.large_price.present? ? '$' + dish.large_price.to_s : 'N/A' %></span>
                 </div>
               </div>
               <div>
@@ -96,10 +101,12 @@
         <div class="col-lg-4 col-md-6 mb-3">
           <img
             src="<%= dish_image.image.url(:medium) %>"
-            class="w-100 shadow-1-strong rounded mb-1"
+            class="w-100 shadow-1-strong rounded mb-1 menu-section-img"
             alt=""
           />
-          <div class="menu-pic-item-name"><%= dish_image.title.present? ? dish_image.title : group_data[:group_info][:dish_group].name %></div>
+          <div class="menu-pic-item-name" style="font-weight:600; color:#dfa25f; font-size:1.1rem;">
+            <%= dish_image.title.present? ? dish_image.title : group_data[:group_info][:dish_group].name %>
+          </div>
         </div>
       <% end %>
     </div>
