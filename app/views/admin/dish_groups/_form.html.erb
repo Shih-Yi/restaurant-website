@@ -17,7 +17,7 @@
   <% end %>
 
   <div class="form-group">
-    <h4>Group Type: <%= dish_group.group_type.upcase %></h4>
+    <h4>Type: <span style="color: #fff; background-color: #dfa25f; padding: 3px; border-radius: 3px;"><%= dish_group.group_type.upcase %></span></h4>
   </div>
 
   <div class="form-group">
@@ -77,18 +77,23 @@
     // 找到外層容器元素並隱藏
     const container = removedItem.closest('.image-container');
     if (container) {
-      container.fadeOut('fast');
+      container.fadeOut('fast', function() {
+        // 在動畫完成後更新計數，確保第一次刪除也能正確更新
+        updateImageCount();
+      });
     }
   });
   
-  $(document).on("cocoon:after-remove", function() {
-    updateImageCount();
-  });
+  // cocoon:after-remove 有時不會正確觸發，所以我們在fadeOut回調中處理
+  // $(document).on("cocoon:after-remove", function() {
+  //   updateImageCount();
+  // });
 
   // 更新圖片計數
   function updateImageCount() {
     const count = $('#dish-group-images .image-container:visible').length;
     $('#image-count').text(count);
+    console.log("Updated count to:", count);
     
     // 如果達到最大數量，禁用添加按鈕
     const addButton = $('.add_fields');
@@ -109,26 +114,31 @@
       }
     });
     
-    // 手動刪除按鈕功能 (不依賴 Cocoon)
-    $(document).on('click', '.delete-image', function(e) {
-      const destroyField = $(this).siblings('.destroy-flag');
-      if (destroyField.length) {
-        destroyField.val('1');
-        $(this).closest('.image-container').fadeOut('fast');
-        updateImageCount();
-      }
-    });
-    
     // 初始化計數
     updateImageCount();
+    
+    // 手動處理刪除按鈕點擊事件 (不使用 Cocoon 的標準移除功能)
+    $(document).on('click', '.delete-image', function(e) {
+      e.preventDefault(); // 防止連結的默認行為
+      const container = $(this).closest('.image-container');
+      const destroyField = container.find('.destroy-flag');
+      
+      if (destroyField.length) {
+        destroyField.val('1');
+        container.fadeOut('fast', function() {
+          updateImageCount(); // 確保計數更新
+        });
+      }
+      
+      return false; // 防止事件冒泡
+    });
   });
 
   // 當添加新圖片時更新計數
   $(document).on('cocoon:after-insert', function(e, insertedItem) {
-    updateImageCount();
-    
     // 確保新添加的元素可見
     insertedItem.closest('.image-container').show();
+    updateImageCount();
   });
   
   // 表單提交前確保刪除標記正確
