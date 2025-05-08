@@ -44,23 +44,13 @@
       <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu">
         <!-- Add icons to the links using the .nav-icon class
         with font-awesome or any other icon font library -->
-         <li class="nav-item has-treeview">
-          <a href="#" class="nav-link treeview-link">
-            <i class="nav-icon fas fa-bell"></i>
+        <li class="nav-item">
+          <a href="<%= admin_notice_path %>" class="nav-link">
+            <i class="far fa-bell nav-icon"></i>
             <p>
               Notifications
-              <i class="right fas fa-angle-left"></i>
             </p>
           </a>
-          <ul class="nav nav-treeview" style="display: none;">
-            
-              <li class="nav-item">
-                <a href="<%= admin_notice_path %>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>home page</p>
-                </a>
-              </li>
-          </ul>
         </li>
 
         <li class="nav-item">
@@ -131,6 +121,15 @@
           </a>
         </li>
         -->
+
+        <li class="nav-item">
+          <a href="<%= admin_dashboard_edit_background_images_path %>" class="nav-link">
+            <i class="nav-icon fas fa-cog"></i>
+            <p>
+              Settings
+            </p>
+          </a>
+        </li>
 
       </ul>
     </nav>
