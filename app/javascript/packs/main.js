@@ -22,7 +22,7 @@ $(document.body).on('touchmove', onScroll); // for mobile
 $(window).on('scroll', onScroll); // for desktop
 
 function onScroll(){
-  var navHeight = $(window).height() - 500;
+  var navHeight = $(window).height() - 600;
   var scrollTop = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop)
   if (scrollTop > navHeight) {
     $('.navbar-default').addClass('on');
