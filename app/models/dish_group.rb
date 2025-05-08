@@ -5,6 +5,7 @@ class DishGroup < ApplicationRecord
   has_many :dish_group_images, -> { order(position: :asc) }, dependent: :destroy
   
   validates :name, presence: true
+  validate :maximum_six_images
 
   default_scope { order("position asc") }
   
@@ -27,6 +28,17 @@ class DishGroup < ApplicationRecord
     
     if valid_images.empty?
       errors.add(:base, "至少需要上傳一張圖片")
+    end
+  end
+
+  # 驗證最多六張圖片
+  def maximum_six_images
+    valid_images = dish_group_images.select do |image|
+      image.image.present? && !image.marked_for_destruction?
+    end
+    
+    if valid_images.size > 6
+      errors.add(:base, "最多只能上傳六張圖片")
     end
   end
   
