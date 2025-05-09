@@ -8,7 +8,7 @@ class HomeController < ApplicationController
 
   def menu
     # Preload all published categories and their dishes, sorted by dish position
-    @dish_groups = DishGroup.where(published: true).order(position: :asc)
+    @dish_groups = DishGroup.includes(:dish_group_images).where(published: true).order(position: :asc)
     
     # Preload all dishes and sort by position
     all_dishes = Dish.includes(:dish_group).order(position: :asc)
@@ -28,8 +28,7 @@ class HomeController < ApplicationController
           name: dish_group.name,
           dishes: group_dishes,
           group_info: {
-            dish_group: dish_group,
-            images: dish_group.images
+            dish_group: dish_group
           }
         }
       end
