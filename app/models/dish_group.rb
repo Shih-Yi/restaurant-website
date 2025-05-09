@@ -68,11 +68,6 @@ class DishGroup < ApplicationRecord
     dish_group_images.order(position: :asc).map(&:image)
   end
   
-  # 向後兼容
-  def dish_images
-    dish_group_images
-  end
-  
   before_create do
     self.position ||= self.class.all.size + 1
   end
