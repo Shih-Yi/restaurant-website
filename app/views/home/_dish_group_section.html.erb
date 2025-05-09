@@ -1,22 +1,3 @@
-<style>
-.menu-section-image {
-  object-fit: cover;
-  height: 200px;
-  width: 100%;
-  border-radius: 0.25rem;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
-  margin-bottom: 0.25rem;
-}
-
-.menu-pic-item-name {
-  font-weight: 500;
-  color: #b26d20;
-  letter-spacing: 1px;
-  font-size: 1.1rem;
-  margin-top: 5px;
-}
-</style>
-
 <% if group_data[:dishes].present? && group_data[:group_info][:dish_group].published? %>
 
     <h3 class="menu-section-title">
@@ -120,7 +101,7 @@
         <div class="col-lg-4 col-md-6 mb-3">
           <img
             src="<%= dish_image.image.url(:medium) %>"
-            class="menu-section-image"
+            class="w-100 shadow-1-strong rounded mb-1 menu-section-img"
             alt=""
           />
           <div class="menu-pic-item-name" style="font-weight:500; color:#b26d20; letter-spacing: 0.7px; font-size:1.1rem;">
