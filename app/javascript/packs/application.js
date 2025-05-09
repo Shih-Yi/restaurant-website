@@ -21,6 +21,11 @@ window.toastr = require("toastr");
 // scss
 import "../stylesheets/application"
 
+// Import images
+import "../image/home/intro-bg.jpg"
+import "../image/home/menu-bg.jpg"
+import "../image/home/admin-bg.jpg"
+
 // custom js
 import "./main"
 
