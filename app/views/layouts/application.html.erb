@@ -10,24 +10,6 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= stylesheet_pack_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
-
-    <% setting = Setting.first %>
-    <% 
-      intro_bg = setting&.intro_image&.url || asset_pack_path('media/image/home/intro-bg.jpg')
-      menu_bg = setting&.menu_image&.url || asset_pack_path('media/image/home/menu-bg.jpg')
-    %>
-    <style>
-      .intro {
-        background: url("<%= intro_bg %>") center center no-repeat;
-        background-size: cover;
-        background-position: center;
-      }
-      .menu {
-        background: url("<%= menu_bg %>") center center no-repeat;
-        background-size: cover;
-        background-position: center;
-      }
-    </style>
   </head>
 
   <body>
