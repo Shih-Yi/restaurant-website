@@ -1,46 +1,80 @@
 <div class="content-wrapper px-4 py-2">
-  <div class="main-content" style="min-height: 616px;">
+  <div class="main-content">
     <section class="section">
-      <div class="section-header">
-        <h2>Form</h2>
+      <div class="section-header d-flex justify-content-between align-items-center mb-4">
+        <h2><%= @notice.new_record? ? "Create Notice" : "Edit Notice" %></h2>
+        <%= link_to admin_notice_path, class: "btn btn-outline-secondary" do %>
+          <i class="fas fa-arrow-left mr-1"></i> Back
+        <% end %>
       </div>
 
       <div class="section-body">
-        <h2 class="section-title"></h2>
-        <p class="section-lead"></p>
-
         <div class="row">
-        <%= form_for @notice, url: admin_notice_path, html: { class: "col-12 col-md-6 col-lg-6" } do |f| %>
-            <form role="form">
-              <div class="card-body">
-                <div class="form-group">
-                  <%= label_tag("title") %>
-                  <%= f.text_field :title, class: "form-control" %>
-                </div>
-                <div class="form-group">
-                  <%= label_tag("start at") %>
-                  <%= f.datetime_local_field :start_at, class: "form-control" %>
-                </div>
-                <div class="form-group">
-                  <%= label_tag("end at") %>
-                  <%= f.datetime_field :end_at, class: "form-control" %>
-                </div>
-                <div class="form-group">
-                  <%= label_tag("text") %>
-                  <%= f.text_area :text, rows: 10, class: "form-control" %>
-                </div>
-                <div class="form-group">
-                  <%= label_tag("published") %>
-                  <%= f.check_box :published, class: "form-control" %>
-                </div>
+          <div class="col-12 col-md-8">
+            <div class="card">
+              <div class="card-header">
+                <h4>Notice Details</h4>
               </div>
-              <!-- /.card-body -->
+              
+              <%= form_for @notice, url: admin_notice_path, html: { class: "needs-validation" } do |f| %>
+                <div class="card-body">
+                  <div class="form-group">
+                    <%= f.label :title, class: "font-weight-bold" %>
+                    <%= f.text_field :title, class: "form-control", placeholder: "Enter notice title", required: true %>
+                    <small class="form-text text-muted">This will be displayed as the headline of your notice.</small>
+                  </div>
+                  
+                  <div class="form-group">
+                    <%= f.label :text, class: "font-weight-bold" %>
+                    <%= f.text_area :text, rows: 8, class: "form-control", placeholder: "Enter notice content", required: true %>
+                    <small class="form-text text-muted">The main content of your notice.</small>
+                  </div>
 
-              <div class="card-footer">
-                <%= f.submit "submit", class: "btn btn-primary" %>
-              </div>
-            </form>
-          <% end %>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <%= f.label :start_at, "Start Date & Time", class: "font-weight-bold" %>
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                          </div>
+                          <%= f.datetime_local_field :start_at, class: "form-control" %>
+                        </div>
+                        <small class="form-text text-muted">When this notice should start appearing.</small>
+                      </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <%= f.label :end_at, "End Date & Time", class: "font-weight-bold" %>
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                          </div>
+                          <%= f.datetime_field :end_at, class: "form-control" %>
+                        </div>
+                        <small class="form-text text-muted">When this notice should stop appearing.</small>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="custom-control custom-switch">
+                      <%= f.check_box :published, class: "custom-control-input", id: "publishSwitch" %>
+                      <%= f.label :published, "Published", class: "custom-control-label font-weight-bold", for: "publishSwitch" %>
+                    </div>
+                    <small class="form-text text-muted">Toggle to make this notice visible to users.</small>
+                  </div>
+                </div>
+
+                <div class="card-footer text-right">
+                  <%= link_to "Cancel", admin_notice_path, class: "btn btn-secondary mr-2" %>
+                  <%= f.submit @notice.new_record? ? "Create Notice" : "Update Notice", class: "btn btn-primary" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+          
         </div>
       </div>
     </section>
