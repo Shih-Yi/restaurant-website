@@ -8,14 +8,15 @@ class CreateDishGroupsFromDishTypes < ActiveRecord::Migration[6.1]
       # Get Chinese name for each type
       chinese_name = Dish.const_get(:TYPE)[dish_type]
       
-      # Create corresponding dish_group
-      dish_group = DishGroup.create!(
+      # Create corresponding dish_group without running validations
+      dish_group = DishGroup.new(
         name: dish_type.titleize,    # English name (capitalized)
         group_type: dish_type,       # Use same value as dish_type
         published: true,             # Default to published state
         position: index + 1,         # Set position based on TYPE order
         description: chinese_name    # Use Chinese name as description
       )
+      dish_group.save(validate: false)
       
       puts "Created dish group: #{dish_group.name} (#{dish_group.group_type})"
     end
