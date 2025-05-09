@@ -39,7 +39,7 @@
                     <th>Chinese Name</th>
                     <th>Price(small)</th>
                     <th>Price(large)</th>
-                    <th>Settings</th>
+                    <th>Actions</th>
                   </tr>
                 </thead>
                 <tbody id="dish_list">
@@ -51,10 +51,14 @@
                       <td><%= dish.small_price %></td>
                       <td><%= dish.large_price %></td>
                       <td>
-                        <%= link_to edit_admin_dish_path(dish), class: "aaa"  do %>
-                          <i class="far fa-edit fa-2x"></i>
-                        <% end %>
-                        <span class="dish-destroy" data-id=<%= dish.id %>><i class="far fa-times-circle fa-2x"></i></span>
+                        <div class="d-flex justify-content-around">
+                          <%= link_to edit_admin_dish_path(dish), class: "btn btn-sm btn-info mr-2" do %>
+                            <i class="far fa-edit"></i>
+                          <% end %>
+                          <button type="button" class="btn btn-sm btn-danger dish-destroy" data-id="<%= dish.id %>">
+                            <i class="far fa-times-circle"></i>
+                          </button>
+                        </div>
                       </td>
                     </tr>
                   <% end %>

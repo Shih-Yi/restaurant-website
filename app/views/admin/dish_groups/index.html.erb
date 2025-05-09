@@ -47,7 +47,9 @@
                           <td><%= dish_group.dish_group_images.count %></td>
               
                           <td>
-                            <%= link_to "Edit", edit_admin_dish_group_path(dish_group), class: "btn btn-sm btn-info" %>
+                            <%= link_to edit_admin_dish_group_path(dish_group), class: "btn btn-sm btn-info" do %>
+                              <i class="far fa-edit"></i>
+                            <% end %>
                             <!-- <%= link_to "刪除", admin_dish_group_path(dish_group), method: :delete, data: { confirm: "確定要刪除嗎？" }, class: "btn btn-sm btn-danger" %> -->
                           </td>
                         </tr>
