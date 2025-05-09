@@ -101,7 +101,7 @@ a:focus, .btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:acti
 	text-transform: uppercase;
 	// color: #eee;
 	font-weight: 400;
-	font-size: 15px;
+	font-size: 19px;
 	padding: 5px 0;
 	border: 2px solid transparent;
 	letter-spacing: 0.5px;
@@ -312,12 +312,14 @@ header .intro-text {
 }
 
 .menu-item-name {
-  font-weight: 600;
-  font-size: 1.1rem;
+  font-weight: normal;
+  letter-spacing: 1.0px;
+  color: #333;
+  font-size: 1.2rem;
 }
 .menu-item-description {
   color: #555;
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   font-weight: 600;
   margin-bottom: 0.6rem;
 }
