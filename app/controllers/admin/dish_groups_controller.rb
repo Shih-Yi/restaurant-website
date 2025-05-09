@@ -3,7 +3,7 @@ class Admin::DishGroupsController < Admin::BaseController
   before_action :set_dish_group, only: [:edit, :update, :destroy, :update_position]
 
   def index
-    @dish_groups = DishGroup.all.order(position: :asc)
+    @dish_groups = DishGroup.includes(:dish_group_images).order(position: :asc)
   end
 
   def new
