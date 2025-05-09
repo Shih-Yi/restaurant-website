@@ -3,8 +3,7 @@ class DishGroupImage < ApplicationRecord
   
   mount_uploader :image, DishImageUploader
   
-  # Temporarily commenting out to fix the conflict with in_list scope
-  # acts_as_list scope: :dish_group
+  acts_as_list scope: :dish_group
   
   validates :image, presence: true
 
@@ -20,8 +19,7 @@ class DishGroupImage < ApplicationRecord
   end
   
   before_destroy do
-    # Commenting out as it's related to acts_as_list
-    # self.remove_from_list
+    self.remove_from_list
   end
 
   private
